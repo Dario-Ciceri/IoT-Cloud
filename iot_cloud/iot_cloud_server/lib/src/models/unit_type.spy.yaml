@@ -1,0 +1,7 @@
+enum: UnitType
+values:
+    - Celsius
+    - Fahrenheit
+    - Meter
+    - Centimeter
+    - Millimeter

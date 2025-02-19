@@ -1,0 +1,4 @@
+class: IotDeviceState
+fields:
+    status: IotDeviceStatus
+    hwState: IotDeviceHwState?

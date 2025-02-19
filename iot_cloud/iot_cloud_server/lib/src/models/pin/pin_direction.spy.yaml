@@ -1,0 +1,4 @@
+enum: PinDirection
+values:
+    - Input
+    - Output

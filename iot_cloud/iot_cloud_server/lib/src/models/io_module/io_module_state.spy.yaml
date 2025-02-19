@@ -1,0 +1,4 @@
+class: IoModuleState
+fields:
+    value: String
+    unit: UnitType

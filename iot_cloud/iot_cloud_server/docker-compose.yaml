@@ -1,0 +1,54 @@
+services:
+  # Development services
+  postgres:
+    image: postgres:16.3
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: iot_cloud
+      POSTGRES_PASSWORD: "Z2NTHZLngaIUqIy43PHcj3lEbbDtfzCe"
+    volumes:
+      - iot_cloud_data:/var/lib/postgresql/data
+    profiles:
+      - '' # Default profile
+      - dev
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "SemqBGPzFlvFYxvC6MqooFG51s4yjZ3Q"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    profiles:
+      - '' # Default profile
+      - dev
+
+  # Test services
+  postgres_test:
+    image: postgres:16.3
+    ports:
+      - '9090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: iot_cloud_test
+      POSTGRES_PASSWORD: "blEZTxSiTnvwaW7Wr_gD1WQu78ULXe8w"
+    volumes:
+      - iot_cloud_test_data:/var/lib/postgresql/data
+    profiles:
+      - '' # Default profile
+      - test
+  redis_test:
+    image: redis:6.2.6
+    ports:
+      - '9091:6379'
+    command: redis-server --requirepass "vWWPmP63fD_tzEOZKQbzq6pLBRQwkQLW"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    profiles:
+      - '' # Default profile
+      - test
+
+volumes:
+  iot_cloud_data:
+  iot_cloud_test_data:

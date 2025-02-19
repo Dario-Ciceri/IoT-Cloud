@@ -1,0 +1,9 @@
+enum: PinType
+values:
+    - Digital
+    - Analog
+    - Pwm
+    - I2C
+    - SPI
+    - I2S
+    - Interrupt

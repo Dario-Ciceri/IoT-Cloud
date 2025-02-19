@@ -1,0 +1,5 @@
+class: IoModule
+fields:
+    info: IoModuleInfo
+    state: IoModuleState
+    #config: ModuleConfig

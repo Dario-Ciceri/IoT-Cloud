@@ -1,0 +1,8 @@
+enum: IoModuleSubType
+values: 
+    - Temperature
+    - PIR
+    - Ultrasonic
+    - Servo
+    - Stepper
+    - Motor

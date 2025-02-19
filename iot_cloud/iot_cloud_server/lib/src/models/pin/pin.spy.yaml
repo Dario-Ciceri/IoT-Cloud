@@ -1,0 +1,6 @@
+class: Pin
+fields:
+    info: PinInfo
+    value: String
+    type: PinType
+    direction: PinDirection

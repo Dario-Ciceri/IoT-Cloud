@@ -1,0 +1,5 @@
+enum: IotDeviceStatus
+values:
+    - Online
+    - Offline
+    - Error

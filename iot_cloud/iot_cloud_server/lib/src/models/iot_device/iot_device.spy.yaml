@@ -1,0 +1,7 @@
+class: IotDevice
+table: 'iot_device'
+fields:
+    info: IotDeviceInfo
+    state: IotDeviceState
+    attachedModules: List<IoModule>
+    #pins: List<Pins>

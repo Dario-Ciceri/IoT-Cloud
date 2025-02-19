@@ -1,0 +1,5 @@
+class: IotDeviceHwState
+fields:
+    cpuLoad: int
+    temp: double
+    mem: double

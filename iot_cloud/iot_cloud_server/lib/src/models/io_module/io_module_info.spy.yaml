@@ -1,0 +1,6 @@
+class: IoModuleInfo
+fields:
+    serialId: String
+    name: String
+    type: IoModuleType
+    subtype: IoModuleSubType

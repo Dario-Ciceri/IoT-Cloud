@@ -1,0 +1,6 @@
+enum: IotDeviceType
+values:
+    - ArduinoR4WiFi
+    - ESP32
+    - RaspberryPi
+    - STM32
