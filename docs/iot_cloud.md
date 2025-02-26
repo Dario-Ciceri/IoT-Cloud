@@ -15,13 +15,14 @@
     - eliminazione
 
 3) Trasmissione dati e protocolli:
-    - json
-    - http
-    - zenoh
-    - mqtt
-    - matter
-    - thread
-    - zigbee
+    - json (Serverpod)
+    - http (Serverpod)
+    - zenoh (non compatibile con dart, FFI per C binding)
+    - mqtt (non direttamente supportato da Serverpod)
+    - matter (non direttamente supportato da Serverpod)
+    - thread (non direttamente supportato da Serverpod)
+    - zigbee (non direttamente supportato da Serverpod)
+    - websockets (Serverpod)
 
 4) Controllo remoto dei dispositivi
 
