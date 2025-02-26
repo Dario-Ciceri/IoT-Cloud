@@ -1,0 +1,293 @@
+{
+  "actions": [
+    {
+      "type": "deleteTable",
+      "deleteTable": "io_module"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "io_module",
+        "dartName": "IoModule",
+        "module": "iot_cloud",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 6,
+            "isNullable": false,
+            "columnDefault": "nextval('io_module_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "iotDeviceId",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "stateId",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "serialId",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "name",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "type",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "protocol:IoModuleType"
+          },
+          {
+            "name": "subtype",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "protocol:IoModuleSubType"
+          },
+          {
+            "name": "createdAt",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "constraintName": "io_module_fk_0",
+            "columns": [
+              "iotDeviceId"
+            ],
+            "referenceTable": "iot_device",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 3
+          },
+          {
+            "constraintName": "io_module_fk_1",
+            "columns": [
+              "stateId"
+            ],
+            "referenceTable": "io_module_state",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 3
+          }
+        ],
+        "indexes": [
+          {
+            "indexName": "io_module_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          },
+          {
+            "indexName": "io_module_state_unique_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "stateId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": false
+          }
+        ],
+        "managed": true
+      }
+    },
+    {
+      "type": "deleteTable",
+      "deleteTable": "pin"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "pin",
+        "dartName": "Pin",
+        "module": "iot_cloud",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 6,
+            "isNullable": false,
+            "columnDefault": "nextval('pin_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "iotDeviceId",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "name",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "number",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "direction",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "protocol:PinDirection"
+          },
+          {
+            "name": "properties",
+            "columnType": 8,
+            "isNullable": false,
+            "dartType": "List<protocol:PinProperty>"
+          },
+          {
+            "name": "stateId",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "createdAt",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "constraintName": "pin_fk_0",
+            "columns": [
+              "iotDeviceId"
+            ],
+            "referenceTable": "iot_device",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 3
+          },
+          {
+            "constraintName": "pin_fk_1",
+            "columns": [
+              "stateId"
+            ],
+            "referenceTable": "pin_state",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 3
+          }
+        ],
+        "indexes": [
+          {
+            "indexName": "pin_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          },
+          {
+            "indexName": "pin_state_unique_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "stateId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": false
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "columnDropped",
+      "message": "Column \"_iotDeviceAttachedmodulesIotDeviceId\" of table \"io_module\" will be dropped.",
+      "table": "io_module",
+      "columns": [
+        "_iotDeviceAttachedmodulesIotDeviceId"
+      ],
+      "destrucive": true
+    },
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"io_module\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "io_module",
+      "columns": [
+        "iotDeviceId"
+      ],
+      "destrucive": true
+    },
+    {
+      "type": "columnDropped",
+      "message": "Column \"_iotDevicePinsIotDeviceId\" of table \"pin\" will be dropped.",
+      "table": "pin",
+      "columns": [
+        "_iotDevicePinsIotDeviceId"
+      ],
+      "destrucive": true
+    },
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"pin\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "pin",
+      "columns": [
+        "iotDeviceId"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}

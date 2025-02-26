@@ -1,5 +1,0 @@
-class: PinInfo
-fields:
-    name: String
-    number: int
-    

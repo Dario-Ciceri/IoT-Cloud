@@ -1,4 +1,11 @@
 class: IotDeviceState
+table: iot_device_state
 fields:
+    iotDevice: IotDevice?, relation(name=iot_device_state)
     status: IotDeviceStatus
-    hwState: IotDeviceHwState?
+    cpuLoad: int
+    temp: double
+    mem: double
+    heartBeat: DateTime
+    createdAt: DateTime
+    updatedAt: DateTime

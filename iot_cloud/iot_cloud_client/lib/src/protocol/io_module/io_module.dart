@@ -10,42 +10,117 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../io_module/io_module_info.dart' as _i2;
+import '../iot_device/iot_device.dart' as _i2;
 import '../io_module/io_module_state.dart' as _i3;
+import '../io_module/io_module_type.dart' as _i4;
+import '../io_module/io_module_subtype.dart' as _i5;
 
 abstract class IoModule implements _i1.SerializableModel {
   IoModule._({
-    required this.info,
-    required this.state,
+    this.id,
+    required this.iotDeviceId,
+    this.iotDevice,
+    required this.stateId,
+    this.state,
+    required this.serialId,
+    required this.name,
+    required this.type,
+    required this.subtype,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   factory IoModule({
-    required _i2.IoModuleInfo info,
-    required _i3.IoModuleState state,
+    int? id,
+    required int iotDeviceId,
+    _i2.IotDevice? iotDevice,
+    required int stateId,
+    _i3.IoModuleState? state,
+    required String serialId,
+    required String name,
+    required _i4.IoModuleType type,
+    required _i5.IoModuleSubType subtype,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _IoModuleImpl;
 
   factory IoModule.fromJson(Map<String, dynamic> jsonSerialization) {
     return IoModule(
-      info: _i2.IoModuleInfo.fromJson(
-          (jsonSerialization['info'] as Map<String, dynamic>)),
-      state: _i3.IoModuleState.fromJson(
-          (jsonSerialization['state'] as Map<String, dynamic>)),
+      id: jsonSerialization['id'] as int?,
+      iotDeviceId: jsonSerialization['iotDeviceId'] as int,
+      iotDevice: jsonSerialization['iotDevice'] == null
+          ? null
+          : _i2.IotDevice.fromJson(
+              (jsonSerialization['iotDevice'] as Map<String, dynamic>)),
+      stateId: jsonSerialization['stateId'] as int,
+      state: jsonSerialization['state'] == null
+          ? null
+          : _i3.IoModuleState.fromJson(
+              (jsonSerialization['state'] as Map<String, dynamic>)),
+      serialId: jsonSerialization['serialId'] as String,
+      name: jsonSerialization['name'] as String,
+      type: _i4.IoModuleType.fromJson((jsonSerialization['type'] as int)),
+      subtype:
+          _i5.IoModuleSubType.fromJson((jsonSerialization['subtype'] as int)),
+      createdAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
+      updatedAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['updatedAt']),
     );
   }
 
-  _i2.IoModuleInfo info;
+  /// The database id, set if the object has been inserted into the
+  /// database or if it has been fetched from the database. Otherwise,
+  /// the id will be null.
+  int? id;
 
-  _i3.IoModuleState state;
+  int iotDeviceId;
+
+  _i2.IotDevice? iotDevice;
+
+  int stateId;
+
+  _i3.IoModuleState? state;
+
+  String serialId;
+
+  String name;
+
+  _i4.IoModuleType type;
+
+  _i5.IoModuleSubType subtype;
+
+  DateTime createdAt;
+
+  DateTime updatedAt;
 
   IoModule copyWith({
-    _i2.IoModuleInfo? info,
+    int? id,
+    int? iotDeviceId,
+    _i2.IotDevice? iotDevice,
+    int? stateId,
     _i3.IoModuleState? state,
+    String? serialId,
+    String? name,
+    _i4.IoModuleType? type,
+    _i5.IoModuleSubType? subtype,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
-      'info': info.toJson(),
-      'state': state.toJson(),
+      if (id != null) 'id': id,
+      'iotDeviceId': iotDeviceId,
+      if (iotDevice != null) 'iotDevice': iotDevice?.toJson(),
+      'stateId': stateId,
+      if (state != null) 'state': state?.toJson(),
+      'serialId': serialId,
+      'name': name,
+      'type': type.toJson(),
+      'subtype': subtype.toJson(),
+      'createdAt': createdAt.toJson(),
+      'updatedAt': updatedAt.toJson(),
     };
   }
 
@@ -55,23 +130,62 @@ abstract class IoModule implements _i1.SerializableModel {
   }
 }
 
+class _Undefined {}
+
 class _IoModuleImpl extends IoModule {
   _IoModuleImpl({
-    required _i2.IoModuleInfo info,
-    required _i3.IoModuleState state,
+    int? id,
+    required int iotDeviceId,
+    _i2.IotDevice? iotDevice,
+    required int stateId,
+    _i3.IoModuleState? state,
+    required String serialId,
+    required String name,
+    required _i4.IoModuleType type,
+    required _i5.IoModuleSubType subtype,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) : super._(
-          info: info,
+          id: id,
+          iotDeviceId: iotDeviceId,
+          iotDevice: iotDevice,
+          stateId: stateId,
           state: state,
+          serialId: serialId,
+          name: name,
+          type: type,
+          subtype: subtype,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
         );
 
   @override
   IoModule copyWith({
-    _i2.IoModuleInfo? info,
-    _i3.IoModuleState? state,
+    Object? id = _Undefined,
+    int? iotDeviceId,
+    Object? iotDevice = _Undefined,
+    int? stateId,
+    Object? state = _Undefined,
+    String? serialId,
+    String? name,
+    _i4.IoModuleType? type,
+    _i5.IoModuleSubType? subtype,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) {
     return IoModule(
-      info: info ?? this.info.copyWith(),
-      state: state ?? this.state.copyWith(),
+      id: id is int? ? id : this.id,
+      iotDeviceId: iotDeviceId ?? this.iotDeviceId,
+      iotDevice:
+          iotDevice is _i2.IotDevice? ? iotDevice : this.iotDevice?.copyWith(),
+      stateId: stateId ?? this.stateId,
+      state: state is _i3.IoModuleState? ? state : this.state?.copyWith(),
+      serialId: serialId ?? this.serialId,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      subtype: subtype ?? this.subtype,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }

@@ -10,44 +10,99 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../iot_device/iot_device_status.dart' as _i2;
-import '../iot_device/iot_device_hw_state.dart' as _i3;
+import '../iot_device/iot_device.dart' as _i2;
+import '../iot_device/iot_device_status.dart' as _i3;
 
 abstract class IotDeviceState implements _i1.SerializableModel {
   IotDeviceState._({
+    this.id,
+    this.iotDevice,
     required this.status,
-    this.hwState,
+    required this.cpuLoad,
+    required this.temp,
+    required this.mem,
+    required this.heartBeat,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   factory IotDeviceState({
-    required _i2.IotDeviceStatus status,
-    _i3.IotDeviceHwState? hwState,
+    int? id,
+    _i2.IotDevice? iotDevice,
+    required _i3.IotDeviceStatus status,
+    required int cpuLoad,
+    required double temp,
+    required double mem,
+    required DateTime heartBeat,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) = _IotDeviceStateImpl;
 
   factory IotDeviceState.fromJson(Map<String, dynamic> jsonSerialization) {
     return IotDeviceState(
-      status:
-          _i2.IotDeviceStatus.fromJson((jsonSerialization['status'] as int)),
-      hwState: jsonSerialization['hwState'] == null
+      id: jsonSerialization['id'] as int?,
+      iotDevice: jsonSerialization['iotDevice'] == null
           ? null
-          : _i3.IotDeviceHwState.fromJson(
-              (jsonSerialization['hwState'] as Map<String, dynamic>)),
+          : _i2.IotDevice.fromJson(
+              (jsonSerialization['iotDevice'] as Map<String, dynamic>)),
+      status:
+          _i3.IotDeviceStatus.fromJson((jsonSerialization['status'] as int)),
+      cpuLoad: jsonSerialization['cpuLoad'] as int,
+      temp: (jsonSerialization['temp'] as num).toDouble(),
+      mem: (jsonSerialization['mem'] as num).toDouble(),
+      heartBeat:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['heartBeat']),
+      createdAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
+      updatedAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['updatedAt']),
     );
   }
 
-  _i2.IotDeviceStatus status;
+  /// The database id, set if the object has been inserted into the
+  /// database or if it has been fetched from the database. Otherwise,
+  /// the id will be null.
+  int? id;
 
-  _i3.IotDeviceHwState? hwState;
+  _i2.IotDevice? iotDevice;
+
+  _i3.IotDeviceStatus status;
+
+  int cpuLoad;
+
+  double temp;
+
+  double mem;
+
+  DateTime heartBeat;
+
+  DateTime createdAt;
+
+  DateTime updatedAt;
 
   IotDeviceState copyWith({
-    _i2.IotDeviceStatus? status,
-    _i3.IotDeviceHwState? hwState,
+    int? id,
+    _i2.IotDevice? iotDevice,
+    _i3.IotDeviceStatus? status,
+    int? cpuLoad,
+    double? temp,
+    double? mem,
+    DateTime? heartBeat,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
+      if (id != null) 'id': id,
+      if (iotDevice != null) 'iotDevice': iotDevice?.toJson(),
       'status': status.toJson(),
-      if (hwState != null) 'hwState': hwState?.toJson(),
+      'cpuLoad': cpuLoad,
+      'temp': temp,
+      'mem': mem,
+      'heartBeat': heartBeat.toJson(),
+      'createdAt': createdAt.toJson(),
+      'updatedAt': updatedAt.toJson(),
     };
   }
 
@@ -61,22 +116,50 @@ class _Undefined {}
 
 class _IotDeviceStateImpl extends IotDeviceState {
   _IotDeviceStateImpl({
-    required _i2.IotDeviceStatus status,
-    _i3.IotDeviceHwState? hwState,
+    int? id,
+    _i2.IotDevice? iotDevice,
+    required _i3.IotDeviceStatus status,
+    required int cpuLoad,
+    required double temp,
+    required double mem,
+    required DateTime heartBeat,
+    required DateTime createdAt,
+    required DateTime updatedAt,
   }) : super._(
+          id: id,
+          iotDevice: iotDevice,
           status: status,
-          hwState: hwState,
+          cpuLoad: cpuLoad,
+          temp: temp,
+          mem: mem,
+          heartBeat: heartBeat,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
         );
 
   @override
   IotDeviceState copyWith({
-    _i2.IotDeviceStatus? status,
-    Object? hwState = _Undefined,
+    Object? id = _Undefined,
+    Object? iotDevice = _Undefined,
+    _i3.IotDeviceStatus? status,
+    int? cpuLoad,
+    double? temp,
+    double? mem,
+    DateTime? heartBeat,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) {
     return IotDeviceState(
+      id: id is int? ? id : this.id,
+      iotDevice:
+          iotDevice is _i2.IotDevice? ? iotDevice : this.iotDevice?.copyWith(),
       status: status ?? this.status,
-      hwState:
-          hwState is _i3.IotDeviceHwState? ? hwState : this.hwState?.copyWith(),
+      cpuLoad: cpuLoad ?? this.cpuLoad,
+      temp: temp ?? this.temp,
+      mem: mem ?? this.mem,
+      heartBeat: heartBeat ?? this.heartBeat,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }

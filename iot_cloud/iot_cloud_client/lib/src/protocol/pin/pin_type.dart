@@ -11,7 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-enum PinType implements _i1.SerializableModel {
+enum PinProperty implements _i1.SerializableModel {
   Digital,
   Analog,
   Pwm,
@@ -20,7 +20,7 @@ enum PinType implements _i1.SerializableModel {
   I2S,
   Interrupt;
 
-  static PinType fromJson(int index) {
+  static PinProperty fromJson(int index) {
     switch (index) {
       case 0:
         return Digital;
@@ -37,7 +37,8 @@ enum PinType implements _i1.SerializableModel {
       case 6:
         return Interrupt;
       default:
-        throw ArgumentError('Value "$index" cannot be converted to "PinType"');
+        throw ArgumentError(
+            'Value "$index" cannot be converted to "PinProperty"');
     }
   }
 

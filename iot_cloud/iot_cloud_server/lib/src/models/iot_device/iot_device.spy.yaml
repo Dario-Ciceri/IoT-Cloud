@@ -1,7 +1,17 @@
 class: IotDevice
-table: 'iot_device'
+table: iot_device
 fields:
-    info: IotDeviceInfo
-    state: IotDeviceState
-    attachedModules: List<IoModule>
-    #pins: List<Pins>
+    serialId: String
+    type: IotDeviceType
+    name: String
+    fwVersion: String
+    stateId: int
+    state: IotDeviceState?, relation(name=iot_device_state, field=stateId)
+    attachedModules: List<IoModule>?, relation(name=iot_device_attached_modules)
+    pins: List<Pin>?, relation(name=iot_device_pins)
+    createdAt: DateTime
+    updatedAt: DateTime
+indexes:
+  iot_device_state_unique_idx:
+    fields: stateId
+    unique: true

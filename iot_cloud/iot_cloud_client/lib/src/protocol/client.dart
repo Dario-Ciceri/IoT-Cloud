@@ -11,9 +11,38 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
+import 'package:iot_cloud_client/src/protocol/io_module/io_module.dart' as _i3;
 import 'package:iot_cloud_client/src/protocol/iot_device/iot_device.dart'
-    as _i3;
-import 'protocol.dart' as _i4;
+    as _i4;
+import 'protocol.dart' as _i5;
+
+/// {@category Endpoint}
+class EndpointIoModule extends _i1.EndpointRef {
+  EndpointIoModule(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'ioModule';
+
+  _i2.Future<bool> insert(_i3.IoModule ioModule) =>
+      caller.callServerEndpoint<bool>(
+        'ioModule',
+        'insert',
+        {'ioModule': ioModule},
+      );
+
+  _i2.Future<bool> attach(
+    _i4.IotDevice iotDevice,
+    _i3.IoModule ioModule,
+  ) =>
+      caller.callServerEndpoint<bool>(
+        'ioModule',
+        'attach',
+        {
+          'iotDevice': iotDevice,
+          'ioModule': ioModule,
+        },
+      );
+}
 
 /// {@category Endpoint}
 class EndpointIotDevice extends _i1.EndpointRef {
@@ -22,7 +51,7 @@ class EndpointIotDevice extends _i1.EndpointRef {
   @override
   String get name => 'iotDevice';
 
-  _i2.Future<bool> register(_i3.IotDevice iotDevice) =>
+  _i2.Future<bool> register(_i4.IotDevice iotDevice) =>
       caller.callServerEndpoint<bool>(
         'iotDevice',
         'register',
@@ -46,7 +75,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i4.Protocol(),
+          _i5.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -56,14 +85,19 @@ class Client extends _i1.ServerpodClientShared {
           disconnectStreamsOnLostInternetConnection:
               disconnectStreamsOnLostInternetConnection,
         ) {
+    ioModule = EndpointIoModule(this);
     iotDevice = EndpointIotDevice(this);
   }
+
+  late final EndpointIoModule ioModule;
 
   late final EndpointIotDevice iotDevice;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup =>
-      {'iotDevice': iotDevice};
+  Map<String, _i1.EndpointRef> get endpointRefLookup => {
+        'ioModule': ioModule,
+        'iotDevice': iotDevice,
+      };
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

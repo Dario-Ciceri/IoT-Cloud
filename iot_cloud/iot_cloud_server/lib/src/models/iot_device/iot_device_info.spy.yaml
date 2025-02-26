@@ -1,7 +1,0 @@
-class: IotDeviceInfo
-fields:
-    serialId: String
-    type: IotDeviceType
-    name: String
-    fwVersion: String
-    heartBeat: DateTime

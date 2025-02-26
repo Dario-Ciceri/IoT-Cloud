@@ -14,8 +14,9 @@
 import 'package:serverpod_test/serverpod_test.dart' as _i1;
 import 'package:serverpod/serverpod.dart' as _i2;
 import 'dart:async' as _i3;
+import 'package:iot_cloud_server/src/generated/io_module/io_module.dart' as _i4;
 import 'package:iot_cloud_server/src/generated/iot_device/iot_device.dart'
-    as _i4;
+    as _i5;
 import 'package:iot_cloud_server/src/generated/protocol.dart';
 import 'package:iot_cloud_server/src/generated/endpoints.dart';
 export 'package:serverpod_test/serverpod_test_public_exports.dart';
@@ -96,6 +97,8 @@ void withServerpod(
 }
 
 class TestEndpoints {
+  late final _IoModuleEndpoint ioModule;
+
   late final _IotDeviceEndpoint iotDevice;
 }
 
@@ -106,10 +109,87 @@ class _InternalTestEndpoints extends TestEndpoints
     _i2.SerializationManager serializationManager,
     _i2.EndpointDispatch endpoints,
   ) {
+    ioModule = _IoModuleEndpoint(
+      endpoints,
+      serializationManager,
+    );
     iotDevice = _IotDeviceEndpoint(
       endpoints,
       serializationManager,
     );
+  }
+}
+
+class _IoModuleEndpoint {
+  _IoModuleEndpoint(
+    this._endpointDispatch,
+    this._serializationManager,
+  );
+
+  final _i2.EndpointDispatch _endpointDispatch;
+
+  final _i2.SerializationManager _serializationManager;
+
+  _i3.Future<bool> insert(
+    _i1.TestSessionBuilder sessionBuilder,
+    _i4.IoModule ioModule,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'ioModule',
+        method: 'insert',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'ioModule',
+          methodName: 'insert',
+          parameters: _i1.testObjectToJson({'ioModule': ioModule}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<bool>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<bool> attach(
+    _i1.TestSessionBuilder sessionBuilder,
+    _i5.IotDevice iotDevice,
+    _i4.IoModule ioModule,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'ioModule',
+        method: 'attach',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'ioModule',
+          methodName: 'attach',
+          parameters: _i1.testObjectToJson({
+            'iotDevice': iotDevice,
+            'ioModule': ioModule,
+          }),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<bool>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
   }
 }
 
@@ -125,7 +205,7 @@ class _IotDeviceEndpoint {
 
   _i3.Future<bool> register(
     _i1.TestSessionBuilder sessionBuilder,
-    _i4.IotDevice iotDevice,
+    _i5.IotDevice iotDevice,
   ) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =

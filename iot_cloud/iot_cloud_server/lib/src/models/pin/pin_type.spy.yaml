@@ -1,4 +1,4 @@
-enum: PinType
+enum: PinProperty
 values:
     - Digital
     - Analog

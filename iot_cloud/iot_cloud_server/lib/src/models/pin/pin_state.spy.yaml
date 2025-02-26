@@ -1,0 +1,5 @@
+class: PinState
+table: pin_state
+fields:    
+    pin: Pin?, relation(name=pin_state)
+    value: String

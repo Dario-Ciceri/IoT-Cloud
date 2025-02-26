@@ -1,2 +1,5 @@
+ioModule:
+  - insert:
+  - attach:
 iotDevice:
   - register:

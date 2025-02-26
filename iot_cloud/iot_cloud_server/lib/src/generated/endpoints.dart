@@ -10,21 +10,77 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import '../endpoints/iot_device_endpoint.dart' as _i2;
+import '../endpoints/io_module_endpoint.dart' as _i2;
+import '../endpoints/iot_device_endpoint.dart' as _i3;
+import 'package:iot_cloud_server/src/generated/io_module/io_module.dart' as _i4;
 import 'package:iot_cloud_server/src/generated/iot_device/iot_device.dart'
-    as _i3;
+    as _i5;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
   void initializeEndpoints(_i1.Server server) {
     var endpoints = <String, _i1.Endpoint>{
-      'iotDevice': _i2.IotDeviceEndpoint()
+      'ioModule': _i2.IoModuleEndpoint()
+        ..initialize(
+          server,
+          'ioModule',
+          null,
+        ),
+      'iotDevice': _i3.IotDeviceEndpoint()
         ..initialize(
           server,
           'iotDevice',
           null,
-        )
+        ),
     };
+    connectors['ioModule'] = _i1.EndpointConnector(
+      name: 'ioModule',
+      endpoint: endpoints['ioModule']!,
+      methodConnectors: {
+        'insert': _i1.MethodConnector(
+          name: 'insert',
+          params: {
+            'ioModule': _i1.ParameterDescription(
+              name: 'ioModule',
+              type: _i1.getType<_i4.IoModule>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['ioModule'] as _i2.IoModuleEndpoint).insert(
+            session,
+            params['ioModule'],
+          ),
+        ),
+        'attach': _i1.MethodConnector(
+          name: 'attach',
+          params: {
+            'iotDevice': _i1.ParameterDescription(
+              name: 'iotDevice',
+              type: _i1.getType<_i5.IotDevice>(),
+              nullable: false,
+            ),
+            'ioModule': _i1.ParameterDescription(
+              name: 'ioModule',
+              type: _i1.getType<_i4.IoModule>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['ioModule'] as _i2.IoModuleEndpoint).attach(
+            session,
+            params['iotDevice'],
+            params['ioModule'],
+          ),
+        ),
+      },
+    );
     connectors['iotDevice'] = _i1.EndpointConnector(
       name: 'iotDevice',
       endpoint: endpoints['iotDevice']!,
@@ -34,7 +90,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'iotDevice': _i1.ParameterDescription(
               name: 'iotDevice',
-              type: _i1.getType<_i3.IotDevice>(),
+              type: _i1.getType<_i5.IotDevice>(),
               nullable: false,
             )
           },
@@ -42,7 +98,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['iotDevice'] as _i2.IotDeviceEndpoint).register(
+              (endpoints['iotDevice'] as _i3.IotDeviceEndpoint).register(
             session,
             params['iotDevice'],
           ),

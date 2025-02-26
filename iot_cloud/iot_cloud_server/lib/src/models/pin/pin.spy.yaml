@@ -1,6 +1,16 @@
 class: Pin
+table: pin
 fields:
-    info: PinInfo
-    value: String
-    type: PinType
+    iotDevice: IotDevice?, relation(name=iot_device_pins)
+    name: String
+    number: int
     direction: PinDirection
+    properties: List<PinProperty>
+    stateId: int
+    state: PinState?, relation(name=pin_state, field=stateId)
+    createdAt: DateTime
+    updatedAt: DateTime
+indexes:
+  pin_state_unique_idx:
+    fields: stateId
+    unique: true

@@ -1,5 +1,17 @@
 class: IoModule
+table: io_module
 fields:
-    info: IoModuleInfo
-    state: IoModuleState
+    iotDevice: IotDevice?, relation(name=iot_device_attached_modules)
+    stateId: int
+    state: IoModuleState?, relation(name=io_module_state, field=stateId)
+    serialId: String
+    name: String
+    type: IoModuleType
+    subtype: IoModuleSubType
     #config: ModuleConfig
+    createdAt: DateTime
+    updatedAt: DateTime
+indexes:
+  io_module_state_unique_idx:
+    fields: stateId
+    unique: true

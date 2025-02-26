@@ -1,4 +1,8 @@
 class: IoModuleState
+table: io_module_state
 fields:
+    ioModule: IoModule?, relation(name=io_module_state)
     value: String
     unit: UnitType
+    createdAt: DateTime
+    updatedAt: DateTime
