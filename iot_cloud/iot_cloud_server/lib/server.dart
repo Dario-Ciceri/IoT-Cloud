@@ -1,3 +1,4 @@
+import 'package:iot_cloud_mqtt/iot_cloud_mqtt.dart';
 import 'package:serverpod/serverpod.dart';
 
 import 'package:iot_cloud_server/src/web/routes/root.dart';
@@ -31,4 +32,6 @@ void run(List<String> args) async {
 
   // Start the server.
   await pod.start();
+
+  await MqttClientHandler().connect();
 }
