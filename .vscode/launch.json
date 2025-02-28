@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "iot_cloud_client",
+            "cwd": "iot_cloud\\iot_cloud_client",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "iot_cloud_flutter",
+            "cwd": "iot_cloud\\iot_cloud_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "iot_cloud_flutter (profile mode)",
+            "cwd": "iot_cloud\\iot_cloud_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "iot_cloud_flutter (release mode)",
+            "cwd": "iot_cloud\\iot_cloud_flutter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "iot_cloud_mqtt",
+            "cwd": "iot_cloud\\iot_cloud_mqtt",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "iot_cloud_server",
+            "cwd": "iot_cloud\\iot_cloud_server",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
