@@ -1,0 +1,10 @@
+name: iot_cloud
+publish_to: none
+environment:
+  sdk: ^3.6.0
+workspace:
+  - packages/iot_cloud_client
+  - packages/iot_cloud_mqtt
+  - packages/iot_cloud_server
+dev_dependencies:
+  melos: ^6.3.2
