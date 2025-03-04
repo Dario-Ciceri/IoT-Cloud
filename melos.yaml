@@ -1,6 +1,7 @@
 name: iot_cloud
 
 packages:
+  - apps/**
   - packages/**
 
 command:

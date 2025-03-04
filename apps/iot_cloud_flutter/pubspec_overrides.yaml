@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: iot_cloud_client
+dependency_overrides:
+  iot_cloud_client:
+    path: ..\\..\\packages\\iot_cloud_client
