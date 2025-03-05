@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/packages/iot_cloud_client/melos_iot_cloud_client.iml" filepath="$PROJECT_DIR$/packages/iot_cloud_client/melos_iot_cloud_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/iot_cloud_flutter/melos_iot_cloud_flutter.iml" filepath="$PROJECT_DIR$/apps/iot_cloud_flutter/melos_iot_cloud_flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/iot_cloud_ide/melos_iot_cloud_ide.iml" filepath="$PROJECT_DIR$/packages/iot_cloud_ide/melos_iot_cloud_ide.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/iot_cloud_mqtt/melos_iot_cloud_mqtt.iml" filepath="$PROJECT_DIR$/packages/iot_cloud_mqtt/melos_iot_cloud_mqtt.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/iot_cloud_server/melos_iot_cloud_server.iml" filepath="$PROJECT_DIR$/packages/iot_cloud_server/melos_iot_cloud_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_iot_cloud.iml" filepath="$PROJECT_DIR$/melos_iot_cloud.iml" />

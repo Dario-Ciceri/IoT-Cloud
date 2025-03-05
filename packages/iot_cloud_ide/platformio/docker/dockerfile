@@ -1,0 +1,30 @@
+FROM python:3.9-slim
+
+LABEL maintainer="DarioCiceri <ciceridario02@gmail.com>"
+LABEL description="PlatformIO Core container for IoT Cloud project."
+
+# Installa le dipendenze necessarie
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    build-essential \
+    udev \
+    libusb-1.0-0 \
+    usbutils \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installa PlatformIO Core
+RUN pip install --no-cache-dir platformio
+
+# Crea una directory di lavoro per i progetti
+WORKDIR /platformio
+
+# Crea una directory per i progetti
+RUN mkdir -p /platformio/projects
+
+# Volume per la persistenza dei progetti
+VOLUME /platformio/projects
+
+# Tieni il container in esecuzione
+CMD ["tail", "-f", "/dev/null"]

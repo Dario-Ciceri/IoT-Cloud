@@ -88,3 +88,7 @@ Il cloud registra la scheda e la associa all'utente che ha fatto richiesta.
 L'applicazione riceve una chiave da inviare al dispositivo.
 Il dispositivo salva la chiave.
 La procedura di registrazione si conclude.
+
+## Integrazione PlatformIO
+
+Per gestire schede, librerie, caricare firmware tramite OTA ecc... si potrebbe usare PlatformIO Core tramite Cloud. Il server dovrebbe quindi comunicare con PlatformIO Core tramite un container docker, l'IDE dovrebbe comunicare con il server per comunicare con Platformio. Il caricamento del firmware e il monitor seriale bisogna capire come gestirli.
