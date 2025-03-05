@@ -30,5 +30,13 @@ class AppRouter extends RootStackRouter {
           path: '/help',
           page: HelpRoute.page,
         ),
+        AutoRoute(
+          path: '/firmare-update',
+          page: FirmwareUpdateRoute.page,
+        ),
+        AutoRoute(
+          path: '/ide',
+          page: CodeEditorRoute.page,
+        ),
       ];
 }

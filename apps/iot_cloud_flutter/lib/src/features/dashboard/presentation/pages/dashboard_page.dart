@@ -898,6 +898,12 @@ class _DashboardPageState extends State<DashboardPage>
                   case 8: // Aiuto
                     context.router.push(const HelpRoute());
                     break;
+                  case 9: // OTA
+                    context.router.push(const FirmwareUpdateRoute());
+                    break;
+                  case 10: // IDE
+                    context.router.push(const CodeEditorRoute());
+                    break;
                 }
               }
             },
@@ -965,6 +971,16 @@ class _DashboardPageState extends State<DashboardPage>
                 icon: Icon(Icons.help_outline),
                 selectedIcon: Icon(Icons.help),
                 label: Text('Aiuto'),
+              ),
+              const NavigationDrawerDestination(
+                icon: Icon(Icons.update_outlined),
+                selectedIcon: Icon(Icons.update),
+                label: Text('OTA'),
+              ),
+              const NavigationDrawerDestination(
+                icon: Icon(Icons.code_outlined),
+                selectedIcon: Icon(Icons.code),
+                label: Text('IDE'),
               ),
 
               // Modalità Vacanza
