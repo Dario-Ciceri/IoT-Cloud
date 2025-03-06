@@ -1,0 +1,10 @@
+class: PlatformioProject
+table: platformio_project
+fields:
+    name: String
+    path: String
+    description: String?
+    board: String?
+    framework: String?
+    createdAt: DateTime
+    updatedAt: DateTime

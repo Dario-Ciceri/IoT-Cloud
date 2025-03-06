@@ -461,50 +461,50 @@ packages:
     dependency: transitive
     description:
       name: serverpod
-      sha256: c2cfd66393a70b40702b85361a307ca54482029a5f79ad039692999e794fd1a0
+      sha256: ae216984a355861c767da5d4b45d0543c5fc6cab193c97efd143fea3d4d19f2b
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   serverpod_client:
     dependency: transitive
     description:
       name: serverpod_client
-      sha256: "32d3d919b64f01d840c8064ce62c2bed3c12aeaeb507302c196857e9e75fad9a"
+      sha256: "67f09bb7ce1b19e1690ce34f390904924d654d9c57680ec9ec7a8c2a88393c88"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   serverpod_lints:
     dependency: transitive
     description:
       name: serverpod_lints
-      sha256: "189ae4c1f3c2fc9cecf53b30213ca3176a94df523058928ab63f7431ab4b19a4"
+      sha256: "3a676f37d02ea890aa9ba0740770d5091176a8af45bc5cf23fe03195d0acf616"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   serverpod_serialization:
     dependency: transitive
     description:
       name: serverpod_serialization
-      sha256: e5d195f42a19c178bb4a0a2c11ba0512e7421e42760c4856d88a561d2e416de1
+      sha256: "87d9e769c1189b1fb0eb96a986b673508f351ddee0d472638bcff1f837bf2627"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   serverpod_shared:
     dependency: transitive
     description:
       name: serverpod_shared
-      sha256: c94fd531789c5dd15b68539cc5b57b2040ce786825e3aadc512d41ad90c7cf58
+      sha256: "64e97a71e5e9f5a775924e83a03495092243f9d6ae73cf811ab73cd800613006"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   serverpod_test:
     dependency: transitive
     description:
       name: serverpod_test
-      sha256: "60b06b3cef2b429523a1324dc79bd5eb92b0e2cd9325d1230b050d96853e7a90"
+      sha256: d0f7da2767ccd648526e0c349f82decadd6442916803a9284d3e37a120317d98
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   shelf:
     dependency: transitive
     description:

@@ -1,0 +1,7 @@
+class: PlatformioFile
+fields:
+    name: String
+    path: String
+    isDirectory: bool
+    size: int?
+    lastModified: DateTime?

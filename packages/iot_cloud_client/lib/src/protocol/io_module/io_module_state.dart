@@ -63,6 +63,9 @@ abstract class IoModuleState implements _i1.SerializableModel {
 
   DateTime updatedAt;
 
+  /// Returns a shallow copy of this [IoModuleState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   IoModuleState copyWith({
     int? id,
     _i2.IoModule? ioModule,
@@ -108,6 +111,9 @@ class _IoModuleStateImpl extends IoModuleState {
           updatedAt: updatedAt,
         );
 
+  /// Returns a shallow copy of this [IoModuleState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   IoModuleState copyWith({
     Object? id = _Undefined,

@@ -1,0 +1,5 @@
+class: PlatformioStatus
+fields:
+    installed: bool
+    version: String
+    errorMessage: String?

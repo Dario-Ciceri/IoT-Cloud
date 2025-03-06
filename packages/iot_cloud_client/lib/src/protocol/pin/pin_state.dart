@@ -45,6 +45,9 @@ abstract class PinState implements _i1.SerializableModel {
 
   String value;
 
+  /// Returns a shallow copy of this [PinState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   PinState copyWith({
     int? id,
     _i2.Pin? pin,
@@ -78,6 +81,9 @@ class _PinStateImpl extends PinState {
           value: value,
         );
 
+  /// Returns a shallow copy of this [PinState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   PinState copyWith({
     Object? id = _Undefined,

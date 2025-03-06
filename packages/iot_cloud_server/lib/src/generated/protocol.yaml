@@ -3,3 +3,32 @@ ioModule:
   - attach:
 iotDevice:
   - register:
+platformio:
+  - checkPlatformIO:
+  - initProject:
+  - listProjects:
+  - getProject:
+  - deleteProject:
+  - buildProject:
+  - uploadProject:
+  - uploadProjectOTA:
+  - listBoards:
+  - searchBoards:
+  - listDevices:
+  - installLibrary:
+  - searchLibraries:
+  - updateLibraryIndex:
+  - readProjectFile:
+  - writeProjectFile:
+  - listProjectFiles:
+  - listPlatforms:
+  - installPlatform:
+  - updatePlatforms:
+  - syncProjects:
+  - executeDockerCommand:
+platformioFile:
+  - listFiles:
+  - readFile:
+  - writeFile:
+  - createDirectory:
+  - deleteFileOrDirectory:

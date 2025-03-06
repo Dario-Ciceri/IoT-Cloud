@@ -1,0 +1,7 @@
+class: PlatformioDevice
+fields:
+    port: String
+    description: String?
+    hwid: String?
+    vendorId: String?
+    productId: String?

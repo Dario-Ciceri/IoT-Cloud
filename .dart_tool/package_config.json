@@ -345,37 +345,37 @@
     },
     {
       "name": "serverpod",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod-2.3.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "serverpod_client",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_client-2.3.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_client-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "serverpod_lints",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_lints-2.3.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_lints-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "serverpod_serialization",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_serialization-2.3.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_serialization-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "serverpod_shared",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_shared-2.3.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_shared-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "serverpod_test",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_test-2.3.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/serverpod_test-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -576,9 +576,15 @@
       "rootUri": "../packages/iot_cloud_server",
       "packageUri": "lib/",
       "languageVersion": "3.6"
+    },
+    {
+      "name": "iot_cloud_ide",
+      "rootUri": "../packages/iot_cloud_ide",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-05T19:27:33.982996Z",
+  "generated": "2025-03-05T23:55:00.378316Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///C:/flutter",

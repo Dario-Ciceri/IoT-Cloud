@@ -12,9 +12,13 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/io_module_endpoint.dart' as _i2;
 import '../endpoints/iot_device_endpoint.dart' as _i3;
-import 'package:iot_cloud_server/src/generated/io_module/io_module.dart' as _i4;
+import '../endpoints/platformio_endpoint.dart' as _i4;
+import '../endpoints/platformio_file_endpoint.dart' as _i5;
+import 'package:iot_cloud_server/src/generated/io_module/io_module.dart' as _i6;
 import 'package:iot_cloud_server/src/generated/iot_device/iot_device.dart'
-    as _i5;
+    as _i7;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_project.dart'
+    as _i8;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -32,6 +36,18 @@ class Endpoints extends _i1.EndpointDispatch {
           'iotDevice',
           null,
         ),
+      'platformio': _i4.PlatformioEndpoint()
+        ..initialize(
+          server,
+          'platformio',
+          null,
+        ),
+      'platformioFile': _i5.PlatformioFileEndpoint()
+        ..initialize(
+          server,
+          'platformioFile',
+          null,
+        ),
     };
     connectors['ioModule'] = _i1.EndpointConnector(
       name: 'ioModule',
@@ -42,7 +58,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'ioModule': _i1.ParameterDescription(
               name: 'ioModule',
-              type: _i1.getType<_i4.IoModule>(),
+              type: _i1.getType<_i6.IoModule>(),
               nullable: false,
             )
           },
@@ -60,12 +76,12 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'iotDevice': _i1.ParameterDescription(
               name: 'iotDevice',
-              type: _i1.getType<_i5.IotDevice>(),
+              type: _i1.getType<_i7.IotDevice>(),
               nullable: false,
             ),
             'ioModule': _i1.ParameterDescription(
               name: 'ioModule',
-              type: _i1.getType<_i4.IoModule>(),
+              type: _i1.getType<_i6.IoModule>(),
               nullable: false,
             ),
           },
@@ -90,7 +106,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'iotDevice': _i1.ParameterDescription(
               name: 'iotDevice',
-              type: _i1.getType<_i5.IotDevice>(),
+              type: _i1.getType<_i7.IotDevice>(),
               nullable: false,
             )
           },
@@ -103,6 +119,519 @@ class Endpoints extends _i1.EndpointDispatch {
             params['iotDevice'],
           ),
         )
+      },
+    );
+    connectors['platformio'] = _i1.EndpointConnector(
+      name: 'platformio',
+      endpoint: endpoints['platformio']!,
+      methodConnectors: {
+        'checkPlatformIO': _i1.MethodConnector(
+          name: 'checkPlatformIO',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .checkPlatformIO(session),
+        ),
+        'initProject': _i1.MethodConnector(
+          name: 'initProject',
+          params: {
+            'path': _i1.ParameterDescription(
+              name: 'path',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'board': _i1.ParameterDescription(
+              name: 'board',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'framework': _i1.ParameterDescription(
+              name: 'framework',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'name': _i1.ParameterDescription(
+              name: 'name',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'description': _i1.ParameterDescription(
+              name: 'description',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint).initProject(
+            session,
+            params['path'],
+            params['board'],
+            params['framework'],
+            params['name'],
+            params['description'],
+          ),
+        ),
+        'listProjects': _i1.MethodConnector(
+          name: 'listProjects',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .listProjects(session),
+        ),
+        'getProject': _i1.MethodConnector(
+          name: 'getProject',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint).getProject(
+            session,
+            params['id'],
+          ),
+        ),
+        'deleteProject': _i1.MethodConnector(
+          name: 'deleteProject',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint).deleteProject(
+            session,
+            params['id'],
+          ),
+        ),
+        'buildProject': _i1.MethodConnector(
+          name: 'buildProject',
+          params: {
+            'project': _i1.ParameterDescription(
+              name: 'project',
+              type: _i1.getType<_i8.PlatformioProject>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint).buildProject(
+            session,
+            params['project'],
+          ),
+        ),
+        'uploadProject': _i1.MethodConnector(
+          name: 'uploadProject',
+          params: {
+            'project': _i1.ParameterDescription(
+              name: 'project',
+              type: _i1.getType<_i8.PlatformioProject>(),
+              nullable: false,
+            ),
+            'port': _i1.ParameterDescription(
+              name: 'port',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint).uploadProject(
+            session,
+            params['project'],
+            params['port'],
+          ),
+        ),
+        'uploadProjectOTA': _i1.MethodConnector(
+          name: 'uploadProjectOTA',
+          params: {
+            'project': _i1.ParameterDescription(
+              name: 'project',
+              type: _i1.getType<_i8.PlatformioProject>(),
+              nullable: false,
+            ),
+            'ipAddress': _i1.ParameterDescription(
+              name: 'ipAddress',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'port': _i1.ParameterDescription(
+              name: 'port',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .uploadProjectOTA(
+            session,
+            params['project'],
+            params['ipAddress'],
+            params['port'],
+          ),
+        ),
+        'listBoards': _i1.MethodConnector(
+          name: 'listBoards',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .listBoards(session),
+        ),
+        'searchBoards': _i1.MethodConnector(
+          name: 'searchBoards',
+          params: {
+            'query': _i1.ParameterDescription(
+              name: 'query',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint).searchBoards(
+            session,
+            params['query'],
+          ),
+        ),
+        'listDevices': _i1.MethodConnector(
+          name: 'listDevices',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .listDevices(session),
+        ),
+        'installLibrary': _i1.MethodConnector(
+          name: 'installLibrary',
+          params: {
+            'project': _i1.ParameterDescription(
+              name: 'project',
+              type: _i1.getType<_i8.PlatformioProject>(),
+              nullable: false,
+            ),
+            'library': _i1.ParameterDescription(
+              name: 'library',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .installLibrary(
+            session,
+            params['project'],
+            params['library'],
+          ),
+        ),
+        'searchLibraries': _i1.MethodConnector(
+          name: 'searchLibraries',
+          params: {
+            'query': _i1.ParameterDescription(
+              name: 'query',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .searchLibraries(
+            session,
+            params['query'],
+          ),
+        ),
+        'updateLibraryIndex': _i1.MethodConnector(
+          name: 'updateLibraryIndex',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .updateLibraryIndex(session),
+        ),
+        'readProjectFile': _i1.MethodConnector(
+          name: 'readProjectFile',
+          params: {
+            'path': _i1.ParameterDescription(
+              name: 'path',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .readProjectFile(
+            session,
+            params['path'],
+          ),
+        ),
+        'writeProjectFile': _i1.MethodConnector(
+          name: 'writeProjectFile',
+          params: {
+            'path': _i1.ParameterDescription(
+              name: 'path',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'content': _i1.ParameterDescription(
+              name: 'content',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .writeProjectFile(
+            session,
+            params['path'],
+            params['content'],
+          ),
+        ),
+        'listProjectFiles': _i1.MethodConnector(
+          name: 'listProjectFiles',
+          params: {
+            'projectPath': _i1.ParameterDescription(
+              name: 'projectPath',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .listProjectFiles(
+            session,
+            params['projectPath'],
+          ),
+        ),
+        'listPlatforms': _i1.MethodConnector(
+          name: 'listPlatforms',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .listPlatforms(session),
+        ),
+        'installPlatform': _i1.MethodConnector(
+          name: 'installPlatform',
+          params: {
+            'platform': _i1.ParameterDescription(
+              name: 'platform',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .installPlatform(
+            session,
+            params['platform'],
+          ),
+        ),
+        'updatePlatforms': _i1.MethodConnector(
+          name: 'updatePlatforms',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .updatePlatforms(session),
+        ),
+        'syncProjects': _i1.MethodConnector(
+          name: 'syncProjects',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .syncProjects(session),
+        ),
+        'executeDockerCommand': _i1.MethodConnector(
+          name: 'executeDockerCommand',
+          params: {
+            'command': _i1.ParameterDescription(
+              name: 'command',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+                  .executeDockerCommand(
+            session,
+            params['command'],
+          ),
+        ),
+      },
+    );
+    connectors['platformioFile'] = _i1.EndpointConnector(
+      name: 'platformioFile',
+      endpoint: endpoints['platformioFile']!,
+      methodConnectors: {
+        'listFiles': _i1.MethodConnector(
+          name: 'listFiles',
+          params: {
+            'directoryPath': _i1.ParameterDescription(
+              name: 'directoryPath',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+                  .listFiles(
+            session,
+            params['directoryPath'],
+          ),
+        ),
+        'readFile': _i1.MethodConnector(
+          name: 'readFile',
+          params: {
+            'filePath': _i1.ParameterDescription(
+              name: 'filePath',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+                  .readFile(
+            session,
+            params['filePath'],
+          ),
+        ),
+        'writeFile': _i1.MethodConnector(
+          name: 'writeFile',
+          params: {
+            'filePath': _i1.ParameterDescription(
+              name: 'filePath',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'content': _i1.ParameterDescription(
+              name: 'content',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+                  .writeFile(
+            session,
+            params['filePath'],
+            params['content'],
+          ),
+        ),
+        'createDirectory': _i1.MethodConnector(
+          name: 'createDirectory',
+          params: {
+            'directoryPath': _i1.ParameterDescription(
+              name: 'directoryPath',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+                  .createDirectory(
+            session,
+            params['directoryPath'],
+          ),
+        ),
+        'deleteFileOrDirectory': _i1.MethodConnector(
+          name: 'deleteFileOrDirectory',
+          params: {
+            'path': _i1.ParameterDescription(
+              name: 'path',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'recursive': _i1.ParameterDescription(
+              name: 'recursive',
+              type: _i1.getType<bool>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+                  .deleteFileOrDirectory(
+            session,
+            params['path'],
+            params['recursive'],
+          ),
+        ),
       },
     );
   }

@@ -1,0 +1,6 @@
+class: PlatformioBuildResult
+fields:
+    success: bool
+    output: String
+    errorOutput: String?
+    duration: int

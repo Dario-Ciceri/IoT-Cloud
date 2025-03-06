@@ -80,6 +80,9 @@ abstract class IotDeviceState implements _i1.SerializableModel {
 
   DateTime updatedAt;
 
+  /// Returns a shallow copy of this [IotDeviceState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   IotDeviceState copyWith({
     int? id,
     _i2.IotDevice? iotDevice,
@@ -137,6 +140,9 @@ class _IotDeviceStateImpl extends IotDeviceState {
           updatedAt: updatedAt,
         );
 
+  /// Returns a shallow copy of this [IotDeviceState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   IotDeviceState copyWith({
     Object? id = _Undefined,

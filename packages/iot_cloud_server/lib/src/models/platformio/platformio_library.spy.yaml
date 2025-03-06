@@ -1,0 +1,9 @@
+class: PlatformioLibrary
+fields:
+    id: String
+    name: String
+    description: String
+    version: String
+    exampleCount: int
+    authorName: String?
+    homepage: String?

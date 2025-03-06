@@ -6,5 +6,6 @@ workspace:
   - packages/iot_cloud_client
   - packages/iot_cloud_mqtt
   - packages/iot_cloud_server
+  - packages/iot_cloud_ide
 dev_dependencies:
   melos: ^6.3.2

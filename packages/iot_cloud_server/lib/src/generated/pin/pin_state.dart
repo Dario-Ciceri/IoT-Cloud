@@ -50,6 +50,9 @@ abstract class PinState implements _i1.TableRow, _i1.ProtocolSerialization {
   @override
   _i1.Table get table => t;
 
+  /// Returns a shallow copy of this [PinState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   PinState copyWith({
     int? id,
     _i2.Pin? pin,
@@ -116,6 +119,9 @@ class _PinStateImpl extends PinState {
           value: value,
         );
 
+  /// Returns a shallow copy of this [PinState]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   PinState copyWith({
     Object? id = _Undefined,
@@ -209,6 +215,28 @@ class PinStateRepository {
 
   final attachRow = const PinStateAttachRowRepository._();
 
+  /// Returns a list of [PinState]s matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order of the items use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// The maximum number of items can be set by [limit]. If no limit is set,
+  /// all items matching the query will be returned.
+  ///
+  /// [offset] defines how many items to skip, after which [limit] (or all)
+  /// items are read from the database.
+  ///
+  /// ```dart
+  /// var persons = await Persons.db.find(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.firstName,
+  ///   limit: 100,
+  /// );
+  /// ```
   Future<List<PinState>> find(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<PinStateTable>? where,
@@ -232,6 +260,23 @@ class PinStateRepository {
     );
   }
 
+  /// Returns the first matching [PinState] matching the given query parameters.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// [offset] defines how many items to skip, after which the next one will be picked.
+  ///
+  /// ```dart
+  /// var youngestPerson = await Persons.db.findFirstRow(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.age,
+  /// );
+  /// ```
   Future<PinState?> findFirstRow(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<PinStateTable>? where,
@@ -253,6 +298,7 @@ class PinStateRepository {
     );
   }
 
+  /// Finds a single [PinState] by its [id] or null if no such row exists.
   Future<PinState?> findById(
     _i1.Session session,
     int id, {
@@ -266,6 +312,12 @@ class PinStateRepository {
     );
   }
 
+  /// Inserts all [PinState]s in the list and returns the inserted rows.
+  ///
+  /// The returned [PinState]s will have their `id` fields set.
+  ///
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// insert, none of the rows will be inserted.
   Future<List<PinState>> insert(
     _i1.Session session,
     List<PinState> rows, {
@@ -277,6 +329,9 @@ class PinStateRepository {
     );
   }
 
+  /// Inserts a single [PinState] and returns the inserted row.
+  ///
+  /// The returned [PinState] will have its `id` field set.
   Future<PinState> insertRow(
     _i1.Session session,
     PinState row, {
@@ -288,6 +343,11 @@ class PinStateRepository {
     );
   }
 
+  /// Updates all [PinState]s in the list and returns the updated rows. If
+  /// [columns] is provided, only those columns will be updated. Defaults to
+  /// all columns.
+  /// This is an atomic operation, meaning that if one of the rows fails to
+  /// update, none of the rows will be updated.
   Future<List<PinState>> update(
     _i1.Session session,
     List<PinState> rows, {
@@ -301,6 +361,9 @@ class PinStateRepository {
     );
   }
 
+  /// Updates a single [PinState]. The row needs to have its id set.
+  /// Optionally, a list of [columns] can be provided to only update those
+  /// columns. Defaults to all columns.
   Future<PinState> updateRow(
     _i1.Session session,
     PinState row, {
@@ -314,6 +377,9 @@ class PinStateRepository {
     );
   }
 
+  /// Deletes all [PinState]s in the list and returns the deleted rows.
+  /// This is an atomic operation, meaning that if one of the rows fail to
+  /// be deleted, none of the rows will be deleted.
   Future<List<PinState>> delete(
     _i1.Session session,
     List<PinState> rows, {
@@ -325,6 +391,7 @@ class PinStateRepository {
     );
   }
 
+  /// Deletes a single [PinState].
   Future<PinState> deleteRow(
     _i1.Session session,
     PinState row, {
@@ -336,6 +403,7 @@ class PinStateRepository {
     );
   }
 
+  /// Deletes all rows matching the [where] expression.
   Future<List<PinState>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<PinStateTable> where,
@@ -347,6 +415,8 @@ class PinStateRepository {
     );
   }
 
+  /// Counts the number of rows matching the [where] expression. If omitted,
+  /// will return the count of all rows in the table.
   Future<int> count(
     _i1.Session session, {
     _i1.WhereExpressionBuilder<PinStateTable>? where,
@@ -364,6 +434,8 @@ class PinStateRepository {
 class PinStateAttachRowRepository {
   const PinStateAttachRowRepository._();
 
+  /// Creates a relation between the given [PinState] and [Pin]
+  /// by setting the [PinState]'s foreign key `id` to refer to the [Pin].
   Future<void> pin(
     _i1.Session session,
     PinState pinState,

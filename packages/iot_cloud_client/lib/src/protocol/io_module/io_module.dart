@@ -94,6 +94,9 @@ abstract class IoModule implements _i1.SerializableModel {
 
   DateTime updatedAt;
 
+  /// Returns a shallow copy of this [IoModule]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   IoModule copyWith({
     int? id,
     int? iotDeviceId,
@@ -159,6 +162,9 @@ class _IoModuleImpl extends IoModule {
           updatedAt: updatedAt,
         );
 
+  /// Returns a shallow copy of this [IoModule]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   IoModule copyWith({
     Object? id = _Undefined,

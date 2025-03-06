@@ -1,0 +1,8 @@
+class: PlatformioBoard
+fields:
+    id: String
+    name: String
+    platform: String
+    frameworks: List<String>
+    vendor: String?
+    url: String?

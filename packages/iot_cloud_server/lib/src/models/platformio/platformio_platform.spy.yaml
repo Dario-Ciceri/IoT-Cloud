@@ -1,0 +1,7 @@
+class: PlatformioPlatform
+fields:
+    name: String
+    version: String
+    packageName: String
+    title: String
+    description: String

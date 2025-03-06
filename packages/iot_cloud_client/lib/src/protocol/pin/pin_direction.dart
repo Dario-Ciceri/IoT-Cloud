@@ -18,9 +18,9 @@ enum PinDirection implements _i1.SerializableModel {
   static PinDirection fromJson(int index) {
     switch (index) {
       case 0:
-        return Input;
+        return PinDirection.Input;
       case 1:
-        return Output;
+        return PinDirection.Output;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "PinDirection"');

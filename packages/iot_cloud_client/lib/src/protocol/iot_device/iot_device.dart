@@ -94,6 +94,9 @@ abstract class IotDevice implements _i1.SerializableModel {
 
   DateTime updatedAt;
 
+  /// Returns a shallow copy of this [IotDevice]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   IotDevice copyWith({
     int? id,
     String? serialId,
@@ -161,6 +164,9 @@ class _IotDeviceImpl extends IotDevice {
           updatedAt: updatedAt,
         );
 
+  /// Returns a shallow copy of this [IotDevice]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   IotDevice copyWith({
     Object? id = _Undefined,

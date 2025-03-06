@@ -22,17 +22,17 @@ enum IoModuleSubType implements _i1.SerializableModel {
   static IoModuleSubType fromJson(int index) {
     switch (index) {
       case 0:
-        return Temperature;
+        return IoModuleSubType.Temperature;
       case 1:
-        return PIR;
+        return IoModuleSubType.PIR;
       case 2:
-        return Ultrasonic;
+        return IoModuleSubType.Ultrasonic;
       case 3:
-        return Servo;
+        return IoModuleSubType.Servo;
       case 4:
-        return Stepper;
+        return IoModuleSubType.Stepper;
       case 5:
-        return Motor;
+        return IoModuleSubType.Motor;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "IoModuleSubType"');

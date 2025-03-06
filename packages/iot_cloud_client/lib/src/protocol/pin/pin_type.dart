@@ -23,19 +23,19 @@ enum PinProperty implements _i1.SerializableModel {
   static PinProperty fromJson(int index) {
     switch (index) {
       case 0:
-        return Digital;
+        return PinProperty.Digital;
       case 1:
-        return Analog;
+        return PinProperty.Analog;
       case 2:
-        return Pwm;
+        return PinProperty.Pwm;
       case 3:
-        return I2C;
+        return PinProperty.I2C;
       case 4:
-        return SPI;
+        return PinProperty.SPI;
       case 5:
-        return I2S;
+        return PinProperty.I2S;
       case 6:
-        return Interrupt;
+        return PinProperty.Interrupt;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "PinProperty"');

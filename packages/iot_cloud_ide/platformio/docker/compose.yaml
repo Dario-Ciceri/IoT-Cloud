@@ -1,0 +1,22 @@
+services:
+  platformio:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: platformio
+    volumes:
+      - ./projects:/platformio/projects
+      - ~/.platformio:/root/.platformio
+    # USB device access for flashing microcontrollers
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyACM0:/dev/ttyACM0
+    # Privileged mode for hardware access
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - iot_cloud_network
+    
+networks:
+  iot_cloud_network:
+    external: true

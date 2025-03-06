@@ -23,7 +23,27 @@ import 'pin/pin.dart' as _i11;
 import 'pin/pin_direction.dart' as _i12;
 import 'pin/pin_state.dart' as _i13;
 import 'pin/pin_type.dart' as _i14;
-import 'unit_type.dart' as _i15;
+import 'platformio/platformio_board.dart' as _i15;
+import 'platformio/platformio_build_result.dart' as _i16;
+import 'platformio/platformio_device.dart' as _i17;
+import 'platformio/platformio_file.dart' as _i18;
+import 'platformio/platformio_library.dart' as _i19;
+import 'platformio/platformio_platform.dart' as _i20;
+import 'platformio/platformio_project.dart' as _i21;
+import 'platformio/platformio_status.dart' as _i22;
+import 'unit_type.dart' as _i23;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_project.dart'
+    as _i24;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_board.dart'
+    as _i25;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_device.dart'
+    as _i26;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_library.dart'
+    as _i27;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_platform.dart'
+    as _i28;
+import 'package:iot_cloud_server/src/generated/platformio/platformio_file.dart'
+    as _i29;
 export 'io_module/io_module.dart';
 export 'io_module/io_module_state.dart';
 export 'io_module/io_module_subtype.dart';
@@ -36,6 +56,14 @@ export 'pin/pin.dart';
 export 'pin/pin_direction.dart';
 export 'pin/pin_state.dart';
 export 'pin/pin_type.dart';
+export 'platformio/platformio_board.dart';
+export 'platformio/platformio_build_result.dart';
+export 'platformio/platformio_device.dart';
+export 'platformio/platformio_file.dart';
+export 'platformio/platformio_library.dart';
+export 'platformio/platformio_platform.dart';
+export 'platformio/platformio_project.dart';
+export 'platformio/platformio_status.dart';
 export 'unit_type.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
@@ -540,6 +568,80 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
+    _i2.TableDefinition(
+      name: 'platformio_project',
+      dartName: 'PlatformioProject',
+      schema: 'public',
+      module: 'iot_cloud',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'platformio_project_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'name',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'path',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'description',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'board',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'framework',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'createdAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+        _i2.ColumnDefinition(
+          name: 'updatedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+      ],
+      foreignKeys: [],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'platformio_project_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        )
+      ],
+      managed: true,
+    ),
     ..._i2.Protocol.targetTableDefinitions,
   ];
 
@@ -585,8 +687,32 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i14.PinProperty) {
       return _i14.PinProperty.fromJson(data) as T;
     }
-    if (t == _i15.UnitType) {
-      return _i15.UnitType.fromJson(data) as T;
+    if (t == _i15.PlatformioBoard) {
+      return _i15.PlatformioBoard.fromJson(data) as T;
+    }
+    if (t == _i16.PlatformioBuildResult) {
+      return _i16.PlatformioBuildResult.fromJson(data) as T;
+    }
+    if (t == _i17.PlatformioDevice) {
+      return _i17.PlatformioDevice.fromJson(data) as T;
+    }
+    if (t == _i18.PlatformioFile) {
+      return _i18.PlatformioFile.fromJson(data) as T;
+    }
+    if (t == _i19.PlatformioLibrary) {
+      return _i19.PlatformioLibrary.fromJson(data) as T;
+    }
+    if (t == _i20.PlatformioPlatform) {
+      return _i20.PlatformioPlatform.fromJson(data) as T;
+    }
+    if (t == _i21.PlatformioProject) {
+      return _i21.PlatformioProject.fromJson(data) as T;
+    }
+    if (t == _i22.PlatformioStatus) {
+      return _i22.PlatformioStatus.fromJson(data) as T;
+    }
+    if (t == _i23.UnitType) {
+      return _i23.UnitType.fromJson(data) as T;
     }
     if (t == _i1.getType<_i3.IoModule?>()) {
       return (data != null ? _i3.IoModule.fromJson(data) : null) as T;
@@ -624,23 +750,89 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i14.PinProperty?>()) {
       return (data != null ? _i14.PinProperty.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i15.UnitType?>()) {
-      return (data != null ? _i15.UnitType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i15.PlatformioBoard?>()) {
+      return (data != null ? _i15.PlatformioBoard.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i16.PlatformioBuildResult?>()) {
+      return (data != null ? _i16.PlatformioBuildResult.fromJson(data) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i17.PlatformioDevice?>()) {
+      return (data != null ? _i17.PlatformioDevice.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i18.PlatformioFile?>()) {
+      return (data != null ? _i18.PlatformioFile.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i19.PlatformioLibrary?>()) {
+      return (data != null ? _i19.PlatformioLibrary.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i20.PlatformioPlatform?>()) {
+      return (data != null ? _i20.PlatformioPlatform.fromJson(data) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i21.PlatformioProject?>()) {
+      return (data != null ? _i21.PlatformioProject.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i22.PlatformioStatus?>()) {
+      return (data != null ? _i22.PlatformioStatus.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i23.UnitType?>()) {
+      return (data != null ? _i23.UnitType.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<List<_i3.IoModule>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i3.IoModule>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<_i11.Pin>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i11.Pin>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == List<_i14.PinProperty>) {
       return (data as List)
           .map((e) => deserialize<_i14.PinProperty>(e))
-          .toList() as dynamic;
+          .toList() as T;
+    }
+    if (t == List<String>) {
+      return (data as List).map((e) => deserialize<String>(e)).toList() as T;
+    }
+    if (t == List<_i24.PlatformioProject>) {
+      return (data as List)
+          .map((e) => deserialize<_i24.PlatformioProject>(e))
+          .toList() as T;
+    }
+    if (t == List<_i25.PlatformioBoard>) {
+      return (data as List)
+          .map((e) => deserialize<_i25.PlatformioBoard>(e))
+          .toList() as T;
+    }
+    if (t == List<_i26.PlatformioDevice>) {
+      return (data as List)
+          .map((e) => deserialize<_i26.PlatformioDevice>(e))
+          .toList() as T;
+    }
+    if (t == List<_i27.PlatformioLibrary>) {
+      return (data as List)
+          .map((e) => deserialize<_i27.PlatformioLibrary>(e))
+          .toList() as T;
+    }
+    if (t == List<String>) {
+      return (data as List).map((e) => deserialize<String>(e)).toList() as T;
+    }
+    if (t == List<_i28.PlatformioPlatform>) {
+      return (data as List)
+          .map((e) => deserialize<_i28.PlatformioPlatform>(e))
+          .toList() as T;
+    }
+    if (t == Map<String, String>) {
+      return (data as Map).map((k, v) =>
+          MapEntry(deserialize<String>(k), deserialize<String>(v))) as T;
+    }
+    if (t == List<_i29.PlatformioFile>) {
+      return (data as List)
+          .map((e) => deserialize<_i29.PlatformioFile>(e))
+          .toList() as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -688,7 +880,31 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i14.PinProperty) {
       return 'PinProperty';
     }
-    if (data is _i15.UnitType) {
+    if (data is _i15.PlatformioBoard) {
+      return 'PlatformioBoard';
+    }
+    if (data is _i16.PlatformioBuildResult) {
+      return 'PlatformioBuildResult';
+    }
+    if (data is _i17.PlatformioDevice) {
+      return 'PlatformioDevice';
+    }
+    if (data is _i18.PlatformioFile) {
+      return 'PlatformioFile';
+    }
+    if (data is _i19.PlatformioLibrary) {
+      return 'PlatformioLibrary';
+    }
+    if (data is _i20.PlatformioPlatform) {
+      return 'PlatformioPlatform';
+    }
+    if (data is _i21.PlatformioProject) {
+      return 'PlatformioProject';
+    }
+    if (data is _i22.PlatformioStatus) {
+      return 'PlatformioStatus';
+    }
+    if (data is _i23.UnitType) {
       return 'UnitType';
     }
     className = _i2.Protocol().getClassNameForObject(data);
@@ -740,8 +956,32 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'PinProperty') {
       return deserialize<_i14.PinProperty>(data['data']);
     }
+    if (dataClassName == 'PlatformioBoard') {
+      return deserialize<_i15.PlatformioBoard>(data['data']);
+    }
+    if (dataClassName == 'PlatformioBuildResult') {
+      return deserialize<_i16.PlatformioBuildResult>(data['data']);
+    }
+    if (dataClassName == 'PlatformioDevice') {
+      return deserialize<_i17.PlatformioDevice>(data['data']);
+    }
+    if (dataClassName == 'PlatformioFile') {
+      return deserialize<_i18.PlatformioFile>(data['data']);
+    }
+    if (dataClassName == 'PlatformioLibrary') {
+      return deserialize<_i19.PlatformioLibrary>(data['data']);
+    }
+    if (dataClassName == 'PlatformioPlatform') {
+      return deserialize<_i20.PlatformioPlatform>(data['data']);
+    }
+    if (dataClassName == 'PlatformioProject') {
+      return deserialize<_i21.PlatformioProject>(data['data']);
+    }
+    if (dataClassName == 'PlatformioStatus') {
+      return deserialize<_i22.PlatformioStatus>(data['data']);
+    }
     if (dataClassName == 'UnitType') {
-      return deserialize<_i15.UnitType>(data['data']);
+      return deserialize<_i23.UnitType>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);
@@ -771,6 +1011,8 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i11.Pin.t;
       case _i13.PinState:
         return _i13.PinState.t;
+      case _i21.PlatformioProject:
+        return _i21.PlatformioProject.t;
     }
     return null;
   }

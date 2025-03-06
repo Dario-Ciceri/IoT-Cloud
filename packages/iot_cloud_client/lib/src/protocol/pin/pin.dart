@@ -96,6 +96,9 @@ abstract class Pin implements _i1.SerializableModel {
 
   DateTime updatedAt;
 
+  /// Returns a shallow copy of this [Pin]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   Pin copyWith({
     int? id,
     int? iotDeviceId,
@@ -161,6 +164,9 @@ class _PinImpl extends Pin {
           updatedAt: updatedAt,
         );
 
+  /// Returns a shallow copy of this [Pin]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   Pin copyWith({
     Object? id = _Undefined,

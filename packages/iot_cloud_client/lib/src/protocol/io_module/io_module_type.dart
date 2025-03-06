@@ -18,9 +18,9 @@ enum IoModuleType implements _i1.SerializableModel {
   static IoModuleType fromJson(int index) {
     switch (index) {
       case 0:
-        return Sensor;
+        return IoModuleType.Sensor;
       case 1:
-        return Actuator;
+        return IoModuleType.Actuator;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "IoModuleType"');

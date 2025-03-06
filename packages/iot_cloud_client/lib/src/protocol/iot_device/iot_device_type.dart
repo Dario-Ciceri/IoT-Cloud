@@ -20,13 +20,13 @@ enum IotDeviceType implements _i1.SerializableModel {
   static IotDeviceType fromJson(int index) {
     switch (index) {
       case 0:
-        return ArduinoR4WiFi;
+        return IotDeviceType.ArduinoR4WiFi;
       case 1:
-        return ESP32;
+        return IotDeviceType.ESP32;
       case 2:
-        return RaspberryPi;
+        return IotDeviceType.RaspberryPi;
       case 3:
-        return STM32;
+        return IotDeviceType.STM32;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "IotDeviceType"');

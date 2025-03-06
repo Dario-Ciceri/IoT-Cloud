@@ -19,11 +19,11 @@ enum IotDeviceStatus implements _i1.SerializableModel {
   static IotDeviceStatus fromJson(int index) {
     switch (index) {
       case 0:
-        return Online;
+        return IotDeviceStatus.Online;
       case 1:
-        return Offline;
+        return IotDeviceStatus.Offline;
       case 2:
-        return Error;
+        return IotDeviceStatus.Error;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "IotDeviceStatus"');

@@ -21,15 +21,15 @@ enum UnitType implements _i1.SerializableModel {
   static UnitType fromJson(int index) {
     switch (index) {
       case 0:
-        return Celsius;
+        return UnitType.Celsius;
       case 1:
-        return Fahrenheit;
+        return UnitType.Fahrenheit;
       case 2:
-        return Meter;
+        return UnitType.Meter;
       case 3:
-        return Centimeter;
+        return UnitType.Centimeter;
       case 4:
-        return Millimeter;
+        return UnitType.Millimeter;
       default:
         throw ArgumentError('Value "$index" cannot be converted to "UnitType"');
     }

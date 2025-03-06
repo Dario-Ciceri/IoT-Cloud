@@ -23,7 +23,7 @@ import 'package:iot_cloud_flutter/src/features/dashboard/presentation/pages/ota.
 /// [_i1.AccountPage]
 class AccountRoute extends _i5.PageRouteInfo<void> {
   const AccountRoute({List<_i5.PageRouteInfo>? children})
-    : super(AccountRoute.name, initialChildren: children);
+      : super(AccountRoute.name, initialChildren: children);
 
   static const String name = 'AccountRoute';
 
@@ -39,7 +39,7 @@ class AccountRoute extends _i5.PageRouteInfo<void> {
 /// [_i2.CodeEditorPage]
 class CodeEditorRoute extends _i5.PageRouteInfo<void> {
   const CodeEditorRoute({List<_i5.PageRouteInfo>? children})
-    : super(CodeEditorRoute.name, initialChildren: children);
+      : super(CodeEditorRoute.name, initialChildren: children);
 
   static const String name = 'CodeEditorRoute';
 
@@ -55,7 +55,7 @@ class CodeEditorRoute extends _i5.PageRouteInfo<void> {
 /// [_i3.DashboardPage]
 class DashboardRoute extends _i5.PageRouteInfo<void> {
   const DashboardRoute({List<_i5.PageRouteInfo>? children})
-    : super(DashboardRoute.name, initialChildren: children);
+      : super(DashboardRoute.name, initialChildren: children);
 
   static const String name = 'DashboardRoute';
 
@@ -71,7 +71,7 @@ class DashboardRoute extends _i5.PageRouteInfo<void> {
 /// [_i1.DevicesMapPage]
 class DevicesMapRoute extends _i5.PageRouteInfo<void> {
   const DevicesMapRoute({List<_i5.PageRouteInfo>? children})
-    : super(DevicesMapRoute.name, initialChildren: children);
+      : super(DevicesMapRoute.name, initialChildren: children);
 
   static const String name = 'DevicesMapRoute';
 
@@ -87,7 +87,7 @@ class DevicesMapRoute extends _i5.PageRouteInfo<void> {
 /// [_i4.FirmwareUpdatePage]
 class FirmwareUpdateRoute extends _i5.PageRouteInfo<void> {
   const FirmwareUpdateRoute({List<_i5.PageRouteInfo>? children})
-    : super(FirmwareUpdateRoute.name, initialChildren: children);
+      : super(FirmwareUpdateRoute.name, initialChildren: children);
 
   static const String name = 'FirmwareUpdateRoute';
 
@@ -103,7 +103,7 @@ class FirmwareUpdateRoute extends _i5.PageRouteInfo<void> {
 /// [_i1.HelpPage]
 class HelpRoute extends _i5.PageRouteInfo<void> {
   const HelpRoute({List<_i5.PageRouteInfo>? children})
-    : super(HelpRoute.name, initialChildren: children);
+      : super(HelpRoute.name, initialChildren: children);
 
   static const String name = 'HelpRoute';
 
@@ -119,7 +119,7 @@ class HelpRoute extends _i5.PageRouteInfo<void> {
 /// [_i1.NotificationsPage]
 class NotificationsRoute extends _i5.PageRouteInfo<void> {
   const NotificationsRoute({List<_i5.PageRouteInfo>? children})
-    : super(NotificationsRoute.name, initialChildren: children);
+      : super(NotificationsRoute.name, initialChildren: children);
 
   static const String name = 'NotificationsRoute';
 
@@ -135,7 +135,7 @@ class NotificationsRoute extends _i5.PageRouteInfo<void> {
 /// [_i1.SettingsPage]
 class SettingsRoute extends _i5.PageRouteInfo<void> {
   const SettingsRoute({List<_i5.PageRouteInfo>? children})
-    : super(SettingsRoute.name, initialChildren: children);
+      : super(SettingsRoute.name, initialChildren: children);
 
   static const String name = 'SettingsRoute';
 
