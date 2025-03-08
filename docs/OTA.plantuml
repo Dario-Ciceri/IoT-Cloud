@@ -1,0 +1,54 @@
+@startuml
+actor User
+participant "MQTT Client (Dart)" as Client
+participant "MQTT Broker" as Broker
+participant "IoT Device (UNO R4/ESP32)" as Device
+participant "HTTP Server" as Server
+
+User -> Client: Initiate firmware update
+
+Client -> Client: Encode update command (CBOR)
+Client -> Broker: Publish to firmware/update/command
+note over Client, Broker
+  {target: "DEVICE_ID", host: "server.com", port: 8082, path: "/firmware.bin"}
+end note
+
+Broker -> Device: Forward command message
+
+Device -> Device: Decode CBOR command
+Device -> Device: Validate target device ID
+Device -> Broker: Publish update status (CBOR)
+note over Device, Broker
+  {device: "DEVICE_ID", status: "starting", message: "Update starting"}
+end note
+
+Device -> Server: HTTP GET /firmware.bin
+Server -> Device: HTTP 200 + Firmware binary
+
+loop Until download complete
+    Device -> Device: Download chunk
+    Device -> Device: Update CRC32
+    Device -> Broker: Publish progress (CBOR)
+    note over Device, Broker
+      {device: "DEVICE_ID", current: 1024, total: 8192, percentage: 12}
+    end note
+end
+
+Device -> Device: Verify firmware integrity
+
+alt Verification Success
+    Device -> Broker: Publish success status (CBOR)
+    note over Device, Broker
+      {device: "DEVICE_ID", status: "success", message: "Update complete"}
+    end note
+    Device -> Device: Apply update and reboot
+else Verification Failure
+    Device -> Broker: Publish error status (CBOR)
+    note over Device, Broker
+      {device: "DEVICE_ID", status: "error", message: "CRC verification failed"}
+    end note
+end
+
+Broker -> Client: Forward status messages
+Client -> User: Display update status
+@enduml

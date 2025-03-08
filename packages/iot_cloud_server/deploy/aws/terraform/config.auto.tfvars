@@ -81,8 +81,8 @@ staging_autoscaling_desired_capacity = 1
 
 # The deployment bucket name needs to be unique and can only contain lower case
 # letters and dashes (no underscored allowed).
-deployment_bucket_name              = "iot-cloud-deployment-8258185"
-public_storage_bucket_name          = "iot-cloud-public-storage-8258185"
-private_storage_bucket_name         = "iot-cloud-private-storage-8258185"
-public_storage_bucket_name_staging  = "iot-cloud-public-storage-staging-8258185"
-private_storage_bucket_name_staging = "iot-cloud-private-storage-staging-8258185"
+deployment_bucket_name              = "iot-cloud-deployment-6764989"
+public_storage_bucket_name          = "iot-cloud-public-storage-6764989"
+private_storage_bucket_name         = "iot-cloud-private-storage-6764989"
+public_storage_bucket_name_staging  = "iot-cloud-public-storage-staging-6764989"
+private_storage_bucket_name_staging = "iot-cloud-private-storage-staging-6764989"

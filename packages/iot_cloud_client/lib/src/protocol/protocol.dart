@@ -10,39 +10,42 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'io_module/io_module.dart' as _i2;
-import 'io_module/io_module_state.dart' as _i3;
-import 'io_module/io_module_subtype.dart' as _i4;
-import 'io_module/io_module_type.dart' as _i5;
-import 'iot_device/iot_device.dart' as _i6;
-import 'iot_device/iot_device_state.dart' as _i7;
-import 'iot_device/iot_device_status.dart' as _i8;
-import 'iot_device/iot_device_type.dart' as _i9;
-import 'pin/pin.dart' as _i10;
-import 'pin/pin_direction.dart' as _i11;
-import 'pin/pin_state.dart' as _i12;
-import 'pin/pin_type.dart' as _i13;
-import 'platformio/platformio_board.dart' as _i14;
-import 'platformio/platformio_build_result.dart' as _i15;
-import 'platformio/platformio_device.dart' as _i16;
-import 'platformio/platformio_file.dart' as _i17;
-import 'platformio/platformio_library.dart' as _i18;
-import 'platformio/platformio_platform.dart' as _i19;
-import 'platformio/platformio_project.dart' as _i20;
-import 'platformio/platformio_status.dart' as _i21;
-import 'unit_type.dart' as _i22;
+import 'example.dart' as _i2;
+import 'io_module/io_module.dart' as _i3;
+import 'io_module/io_module_state.dart' as _i4;
+import 'io_module/io_module_subtype.dart' as _i5;
+import 'io_module/io_module_type.dart' as _i6;
+import 'iot_device/iot_device.dart' as _i7;
+import 'iot_device/iot_device_state.dart' as _i8;
+import 'iot_device/iot_device_status.dart' as _i9;
+import 'iot_device/iot_device_type.dart' as _i10;
+import 'pin/pin.dart' as _i11;
+import 'pin/pin_direction.dart' as _i12;
+import 'pin/pin_state.dart' as _i13;
+import 'pin/pin_type.dart' as _i14;
+import 'platformio/platformio_board.dart' as _i15;
+import 'platformio/platformio_build_result.dart' as _i16;
+import 'platformio/platformio_device.dart' as _i17;
+import 'platformio/platformio_file.dart' as _i18;
+import 'platformio/platformio_library.dart' as _i19;
+import 'platformio/platformio_platform.dart' as _i20;
+import 'platformio/platformio_project.dart' as _i21;
+import 'platformio/platformio_status.dart' as _i22;
+import 'unit_type.dart' as _i23;
+import 'url_mapping.dart' as _i24;
 import 'package:iot_cloud_client/src/protocol/platformio/platformio_project.dart'
-    as _i23;
-import 'package:iot_cloud_client/src/protocol/platformio/platformio_board.dart'
-    as _i24;
-import 'package:iot_cloud_client/src/protocol/platformio/platformio_device.dart'
     as _i25;
-import 'package:iot_cloud_client/src/protocol/platformio/platformio_library.dart'
+import 'package:iot_cloud_client/src/protocol/platformio/platformio_board.dart'
     as _i26;
-import 'package:iot_cloud_client/src/protocol/platformio/platformio_platform.dart'
+import 'package:iot_cloud_client/src/protocol/platformio/platformio_device.dart'
     as _i27;
-import 'package:iot_cloud_client/src/protocol/platformio/platformio_file.dart'
+import 'package:iot_cloud_client/src/protocol/platformio/platformio_library.dart'
     as _i28;
+import 'package:iot_cloud_client/src/protocol/platformio/platformio_platform.dart'
+    as _i29;
+import 'package:iot_cloud_client/src/protocol/platformio/platformio_file.dart'
+    as _i30;
+export 'example.dart';
 export 'io_module/io_module.dart';
 export 'io_module/io_module_state.dart';
 export 'io_module/io_module_subtype.dart';
@@ -64,6 +67,7 @@ export 'platformio/platformio_platform.dart';
 export 'platformio/platformio_project.dart';
 export 'platformio/platformio_status.dart';
 export 'unit_type.dart';
+export 'url_mapping.dart';
 export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {
@@ -79,187 +83,199 @@ class Protocol extends _i1.SerializationManager {
     Type? t,
   ]) {
     t ??= T;
-    if (t == _i2.IoModule) {
-      return _i2.IoModule.fromJson(data) as T;
+    if (t == _i2.Example) {
+      return _i2.Example.fromJson(data) as T;
     }
-    if (t == _i3.IoModuleState) {
-      return _i3.IoModuleState.fromJson(data) as T;
+    if (t == _i3.IoModule) {
+      return _i3.IoModule.fromJson(data) as T;
     }
-    if (t == _i4.IoModuleSubType) {
-      return _i4.IoModuleSubType.fromJson(data) as T;
+    if (t == _i4.IoModuleState) {
+      return _i4.IoModuleState.fromJson(data) as T;
     }
-    if (t == _i5.IoModuleType) {
-      return _i5.IoModuleType.fromJson(data) as T;
+    if (t == _i5.IoModuleSubType) {
+      return _i5.IoModuleSubType.fromJson(data) as T;
     }
-    if (t == _i6.IotDevice) {
-      return _i6.IotDevice.fromJson(data) as T;
+    if (t == _i6.IoModuleType) {
+      return _i6.IoModuleType.fromJson(data) as T;
     }
-    if (t == _i7.IotDeviceState) {
-      return _i7.IotDeviceState.fromJson(data) as T;
+    if (t == _i7.IotDevice) {
+      return _i7.IotDevice.fromJson(data) as T;
     }
-    if (t == _i8.IotDeviceStatus) {
-      return _i8.IotDeviceStatus.fromJson(data) as T;
+    if (t == _i8.IotDeviceState) {
+      return _i8.IotDeviceState.fromJson(data) as T;
     }
-    if (t == _i9.IotDeviceType) {
-      return _i9.IotDeviceType.fromJson(data) as T;
+    if (t == _i9.IotDeviceStatus) {
+      return _i9.IotDeviceStatus.fromJson(data) as T;
     }
-    if (t == _i10.Pin) {
-      return _i10.Pin.fromJson(data) as T;
+    if (t == _i10.IotDeviceType) {
+      return _i10.IotDeviceType.fromJson(data) as T;
     }
-    if (t == _i11.PinDirection) {
-      return _i11.PinDirection.fromJson(data) as T;
+    if (t == _i11.Pin) {
+      return _i11.Pin.fromJson(data) as T;
     }
-    if (t == _i12.PinState) {
-      return _i12.PinState.fromJson(data) as T;
+    if (t == _i12.PinDirection) {
+      return _i12.PinDirection.fromJson(data) as T;
     }
-    if (t == _i13.PinProperty) {
-      return _i13.PinProperty.fromJson(data) as T;
+    if (t == _i13.PinState) {
+      return _i13.PinState.fromJson(data) as T;
     }
-    if (t == _i14.PlatformioBoard) {
-      return _i14.PlatformioBoard.fromJson(data) as T;
+    if (t == _i14.PinProperty) {
+      return _i14.PinProperty.fromJson(data) as T;
     }
-    if (t == _i15.PlatformioBuildResult) {
-      return _i15.PlatformioBuildResult.fromJson(data) as T;
+    if (t == _i15.PlatformioBoard) {
+      return _i15.PlatformioBoard.fromJson(data) as T;
     }
-    if (t == _i16.PlatformioDevice) {
-      return _i16.PlatformioDevice.fromJson(data) as T;
+    if (t == _i16.PlatformioBuildResult) {
+      return _i16.PlatformioBuildResult.fromJson(data) as T;
     }
-    if (t == _i17.PlatformioFile) {
-      return _i17.PlatformioFile.fromJson(data) as T;
+    if (t == _i17.PlatformioDevice) {
+      return _i17.PlatformioDevice.fromJson(data) as T;
     }
-    if (t == _i18.PlatformioLibrary) {
-      return _i18.PlatformioLibrary.fromJson(data) as T;
+    if (t == _i18.PlatformioFile) {
+      return _i18.PlatformioFile.fromJson(data) as T;
     }
-    if (t == _i19.PlatformioPlatform) {
-      return _i19.PlatformioPlatform.fromJson(data) as T;
+    if (t == _i19.PlatformioLibrary) {
+      return _i19.PlatformioLibrary.fromJson(data) as T;
     }
-    if (t == _i20.PlatformioProject) {
-      return _i20.PlatformioProject.fromJson(data) as T;
+    if (t == _i20.PlatformioPlatform) {
+      return _i20.PlatformioPlatform.fromJson(data) as T;
     }
-    if (t == _i21.PlatformioStatus) {
-      return _i21.PlatformioStatus.fromJson(data) as T;
+    if (t == _i21.PlatformioProject) {
+      return _i21.PlatformioProject.fromJson(data) as T;
     }
-    if (t == _i22.UnitType) {
-      return _i22.UnitType.fromJson(data) as T;
+    if (t == _i22.PlatformioStatus) {
+      return _i22.PlatformioStatus.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i2.IoModule?>()) {
-      return (data != null ? _i2.IoModule.fromJson(data) : null) as T;
+    if (t == _i23.UnitType) {
+      return _i23.UnitType.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i3.IoModuleState?>()) {
-      return (data != null ? _i3.IoModuleState.fromJson(data) : null) as T;
+    if (t == _i24.UrlMapping) {
+      return _i24.UrlMapping.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i4.IoModuleSubType?>()) {
-      return (data != null ? _i4.IoModuleSubType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i2.Example?>()) {
+      return (data != null ? _i2.Example.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i5.IoModuleType?>()) {
-      return (data != null ? _i5.IoModuleType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i3.IoModule?>()) {
+      return (data != null ? _i3.IoModule.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i6.IotDevice?>()) {
-      return (data != null ? _i6.IotDevice.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i4.IoModuleState?>()) {
+      return (data != null ? _i4.IoModuleState.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i7.IotDeviceState?>()) {
-      return (data != null ? _i7.IotDeviceState.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i5.IoModuleSubType?>()) {
+      return (data != null ? _i5.IoModuleSubType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i8.IotDeviceStatus?>()) {
-      return (data != null ? _i8.IotDeviceStatus.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i6.IoModuleType?>()) {
+      return (data != null ? _i6.IoModuleType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i9.IotDeviceType?>()) {
-      return (data != null ? _i9.IotDeviceType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i7.IotDevice?>()) {
+      return (data != null ? _i7.IotDevice.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i10.Pin?>()) {
-      return (data != null ? _i10.Pin.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i8.IotDeviceState?>()) {
+      return (data != null ? _i8.IotDeviceState.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i11.PinDirection?>()) {
-      return (data != null ? _i11.PinDirection.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i9.IotDeviceStatus?>()) {
+      return (data != null ? _i9.IotDeviceStatus.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i12.PinState?>()) {
-      return (data != null ? _i12.PinState.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i10.IotDeviceType?>()) {
+      return (data != null ? _i10.IotDeviceType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i13.PinProperty?>()) {
-      return (data != null ? _i13.PinProperty.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i11.Pin?>()) {
+      return (data != null ? _i11.Pin.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i14.PlatformioBoard?>()) {
-      return (data != null ? _i14.PlatformioBoard.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i12.PinDirection?>()) {
+      return (data != null ? _i12.PinDirection.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i15.PlatformioBuildResult?>()) {
-      return (data != null ? _i15.PlatformioBuildResult.fromJson(data) : null)
+    if (t == _i1.getType<_i13.PinState?>()) {
+      return (data != null ? _i13.PinState.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i14.PinProperty?>()) {
+      return (data != null ? _i14.PinProperty.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i15.PlatformioBoard?>()) {
+      return (data != null ? _i15.PlatformioBoard.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i16.PlatformioBuildResult?>()) {
+      return (data != null ? _i16.PlatformioBuildResult.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i16.PlatformioDevice?>()) {
-      return (data != null ? _i16.PlatformioDevice.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i17.PlatformioDevice?>()) {
+      return (data != null ? _i17.PlatformioDevice.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i17.PlatformioFile?>()) {
-      return (data != null ? _i17.PlatformioFile.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i18.PlatformioFile?>()) {
+      return (data != null ? _i18.PlatformioFile.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i18.PlatformioLibrary?>()) {
-      return (data != null ? _i18.PlatformioLibrary.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i19.PlatformioLibrary?>()) {
+      return (data != null ? _i19.PlatformioLibrary.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i19.PlatformioPlatform?>()) {
-      return (data != null ? _i19.PlatformioPlatform.fromJson(data) : null)
+    if (t == _i1.getType<_i20.PlatformioPlatform?>()) {
+      return (data != null ? _i20.PlatformioPlatform.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i20.PlatformioProject?>()) {
-      return (data != null ? _i20.PlatformioProject.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i21.PlatformioProject?>()) {
+      return (data != null ? _i21.PlatformioProject.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i21.PlatformioStatus?>()) {
-      return (data != null ? _i21.PlatformioStatus.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i22.PlatformioStatus?>()) {
+      return (data != null ? _i22.PlatformioStatus.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i22.UnitType?>()) {
-      return (data != null ? _i22.UnitType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i23.UnitType?>()) {
+      return (data != null ? _i23.UnitType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<List<_i2.IoModule>?>()) {
+    if (t == _i1.getType<_i24.UrlMapping?>()) {
+      return (data != null ? _i24.UrlMapping.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<List<_i3.IoModule>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i2.IoModule>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i3.IoModule>(e)).toList()
           : null) as T;
     }
-    if (t == _i1.getType<List<_i10.Pin>?>()) {
+    if (t == _i1.getType<List<_i11.Pin>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i10.Pin>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i11.Pin>(e)).toList()
           : null) as T;
     }
-    if (t == List<_i13.PinProperty>) {
+    if (t == List<_i14.PinProperty>) {
       return (data as List)
-          .map((e) => deserialize<_i13.PinProperty>(e))
+          .map((e) => deserialize<_i14.PinProperty>(e))
           .toList() as T;
     }
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i23.PlatformioProject>) {
+    if (t == List<_i25.PlatformioProject>) {
       return (data as List)
-          .map((e) => deserialize<_i23.PlatformioProject>(e))
+          .map((e) => deserialize<_i25.PlatformioProject>(e))
           .toList() as T;
     }
-    if (t == List<_i24.PlatformioBoard>) {
+    if (t == List<_i26.PlatformioBoard>) {
       return (data as List)
-          .map((e) => deserialize<_i24.PlatformioBoard>(e))
+          .map((e) => deserialize<_i26.PlatformioBoard>(e))
           .toList() as T;
     }
-    if (t == List<_i25.PlatformioDevice>) {
+    if (t == List<_i27.PlatformioDevice>) {
       return (data as List)
-          .map((e) => deserialize<_i25.PlatformioDevice>(e))
+          .map((e) => deserialize<_i27.PlatformioDevice>(e))
           .toList() as T;
     }
-    if (t == List<_i26.PlatformioLibrary>) {
+    if (t == List<_i28.PlatformioLibrary>) {
       return (data as List)
-          .map((e) => deserialize<_i26.PlatformioLibrary>(e))
+          .map((e) => deserialize<_i28.PlatformioLibrary>(e))
           .toList() as T;
     }
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i27.PlatformioPlatform>) {
+    if (t == List<_i29.PlatformioPlatform>) {
       return (data as List)
-          .map((e) => deserialize<_i27.PlatformioPlatform>(e))
+          .map((e) => deserialize<_i29.PlatformioPlatform>(e))
           .toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<String>(v))) as T;
     }
-    if (t == List<_i28.PlatformioFile>) {
+    if (t == List<_i30.PlatformioFile>) {
       return (data as List)
-          .map((e) => deserialize<_i28.PlatformioFile>(e))
+          .map((e) => deserialize<_i30.PlatformioFile>(e))
           .toList() as T;
     }
     return super.deserialize<T>(data, t);
@@ -269,68 +285,74 @@ class Protocol extends _i1.SerializationManager {
   String? getClassNameForObject(Object? data) {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
-    if (data is _i2.IoModule) {
+    if (data is _i2.Example) {
+      return 'Example';
+    }
+    if (data is _i3.IoModule) {
       return 'IoModule';
     }
-    if (data is _i3.IoModuleState) {
+    if (data is _i4.IoModuleState) {
       return 'IoModuleState';
     }
-    if (data is _i4.IoModuleSubType) {
+    if (data is _i5.IoModuleSubType) {
       return 'IoModuleSubType';
     }
-    if (data is _i5.IoModuleType) {
+    if (data is _i6.IoModuleType) {
       return 'IoModuleType';
     }
-    if (data is _i6.IotDevice) {
+    if (data is _i7.IotDevice) {
       return 'IotDevice';
     }
-    if (data is _i7.IotDeviceState) {
+    if (data is _i8.IotDeviceState) {
       return 'IotDeviceState';
     }
-    if (data is _i8.IotDeviceStatus) {
+    if (data is _i9.IotDeviceStatus) {
       return 'IotDeviceStatus';
     }
-    if (data is _i9.IotDeviceType) {
+    if (data is _i10.IotDeviceType) {
       return 'IotDeviceType';
     }
-    if (data is _i10.Pin) {
+    if (data is _i11.Pin) {
       return 'Pin';
     }
-    if (data is _i11.PinDirection) {
+    if (data is _i12.PinDirection) {
       return 'PinDirection';
     }
-    if (data is _i12.PinState) {
+    if (data is _i13.PinState) {
       return 'PinState';
     }
-    if (data is _i13.PinProperty) {
+    if (data is _i14.PinProperty) {
       return 'PinProperty';
     }
-    if (data is _i14.PlatformioBoard) {
+    if (data is _i15.PlatformioBoard) {
       return 'PlatformioBoard';
     }
-    if (data is _i15.PlatformioBuildResult) {
+    if (data is _i16.PlatformioBuildResult) {
       return 'PlatformioBuildResult';
     }
-    if (data is _i16.PlatformioDevice) {
+    if (data is _i17.PlatformioDevice) {
       return 'PlatformioDevice';
     }
-    if (data is _i17.PlatformioFile) {
+    if (data is _i18.PlatformioFile) {
       return 'PlatformioFile';
     }
-    if (data is _i18.PlatformioLibrary) {
+    if (data is _i19.PlatformioLibrary) {
       return 'PlatformioLibrary';
     }
-    if (data is _i19.PlatformioPlatform) {
+    if (data is _i20.PlatformioPlatform) {
       return 'PlatformioPlatform';
     }
-    if (data is _i20.PlatformioProject) {
+    if (data is _i21.PlatformioProject) {
       return 'PlatformioProject';
     }
-    if (data is _i21.PlatformioStatus) {
+    if (data is _i22.PlatformioStatus) {
       return 'PlatformioStatus';
     }
-    if (data is _i22.UnitType) {
+    if (data is _i23.UnitType) {
       return 'UnitType';
+    }
+    if (data is _i24.UrlMapping) {
+      return 'UrlMapping';
     }
     return null;
   }
@@ -341,68 +363,74 @@ class Protocol extends _i1.SerializationManager {
     if (dataClassName is! String) {
       return super.deserializeByClassName(data);
     }
+    if (dataClassName == 'Example') {
+      return deserialize<_i2.Example>(data['data']);
+    }
     if (dataClassName == 'IoModule') {
-      return deserialize<_i2.IoModule>(data['data']);
+      return deserialize<_i3.IoModule>(data['data']);
     }
     if (dataClassName == 'IoModuleState') {
-      return deserialize<_i3.IoModuleState>(data['data']);
+      return deserialize<_i4.IoModuleState>(data['data']);
     }
     if (dataClassName == 'IoModuleSubType') {
-      return deserialize<_i4.IoModuleSubType>(data['data']);
+      return deserialize<_i5.IoModuleSubType>(data['data']);
     }
     if (dataClassName == 'IoModuleType') {
-      return deserialize<_i5.IoModuleType>(data['data']);
+      return deserialize<_i6.IoModuleType>(data['data']);
     }
     if (dataClassName == 'IotDevice') {
-      return deserialize<_i6.IotDevice>(data['data']);
+      return deserialize<_i7.IotDevice>(data['data']);
     }
     if (dataClassName == 'IotDeviceState') {
-      return deserialize<_i7.IotDeviceState>(data['data']);
+      return deserialize<_i8.IotDeviceState>(data['data']);
     }
     if (dataClassName == 'IotDeviceStatus') {
-      return deserialize<_i8.IotDeviceStatus>(data['data']);
+      return deserialize<_i9.IotDeviceStatus>(data['data']);
     }
     if (dataClassName == 'IotDeviceType') {
-      return deserialize<_i9.IotDeviceType>(data['data']);
+      return deserialize<_i10.IotDeviceType>(data['data']);
     }
     if (dataClassName == 'Pin') {
-      return deserialize<_i10.Pin>(data['data']);
+      return deserialize<_i11.Pin>(data['data']);
     }
     if (dataClassName == 'PinDirection') {
-      return deserialize<_i11.PinDirection>(data['data']);
+      return deserialize<_i12.PinDirection>(data['data']);
     }
     if (dataClassName == 'PinState') {
-      return deserialize<_i12.PinState>(data['data']);
+      return deserialize<_i13.PinState>(data['data']);
     }
     if (dataClassName == 'PinProperty') {
-      return deserialize<_i13.PinProperty>(data['data']);
+      return deserialize<_i14.PinProperty>(data['data']);
     }
     if (dataClassName == 'PlatformioBoard') {
-      return deserialize<_i14.PlatformioBoard>(data['data']);
+      return deserialize<_i15.PlatformioBoard>(data['data']);
     }
     if (dataClassName == 'PlatformioBuildResult') {
-      return deserialize<_i15.PlatformioBuildResult>(data['data']);
+      return deserialize<_i16.PlatformioBuildResult>(data['data']);
     }
     if (dataClassName == 'PlatformioDevice') {
-      return deserialize<_i16.PlatformioDevice>(data['data']);
+      return deserialize<_i17.PlatformioDevice>(data['data']);
     }
     if (dataClassName == 'PlatformioFile') {
-      return deserialize<_i17.PlatformioFile>(data['data']);
+      return deserialize<_i18.PlatformioFile>(data['data']);
     }
     if (dataClassName == 'PlatformioLibrary') {
-      return deserialize<_i18.PlatformioLibrary>(data['data']);
+      return deserialize<_i19.PlatformioLibrary>(data['data']);
     }
     if (dataClassName == 'PlatformioPlatform') {
-      return deserialize<_i19.PlatformioPlatform>(data['data']);
+      return deserialize<_i20.PlatformioPlatform>(data['data']);
     }
     if (dataClassName == 'PlatformioProject') {
-      return deserialize<_i20.PlatformioProject>(data['data']);
+      return deserialize<_i21.PlatformioProject>(data['data']);
     }
     if (dataClassName == 'PlatformioStatus') {
-      return deserialize<_i21.PlatformioStatus>(data['data']);
+      return deserialize<_i22.PlatformioStatus>(data['data']);
     }
     if (dataClassName == 'UnitType') {
-      return deserialize<_i22.UnitType>(data['data']);
+      return deserialize<_i23.UnitType>(data['data']);
+    }
+    if (dataClassName == 'UrlMapping') {
+      return deserialize<_i24.UrlMapping>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

@@ -12,6 +12,7 @@ command:
     releaseUrl: true
 
 scripts:
+  boot: cd ./packages/iot_cloud_mqtt/docker && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose up --build --detach && cd ..
   dev: cd ./packages/iot_cloud_mqtt/docker && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose up --build --detach && dart bin/main.dart --apply-migrations && cd ..
   gen: cd ./packages/iot_cloud_server && serverpod generate && cd ..
   migrate: cd ./packages/iot_cloud_server && serverpod create-migration -f && cd ..

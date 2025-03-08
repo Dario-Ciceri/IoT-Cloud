@@ -1,5 +1,6 @@
-1) usare freezed + mason bricks
-2) creare prima feature e struttura del progetto
-3) creare template
-3) usare melos
-4) sonarqube/scanner
+1) creare template
+2) sonarqube/scanner
+3) creare libreria per OTA e per MQTT in cpp
+4) unire storage a platformio e creare cloud ide
+5) finire la prima feature della dashboard
+6) fare feature per Cloud IDE ed integrare quanto fatto finora 

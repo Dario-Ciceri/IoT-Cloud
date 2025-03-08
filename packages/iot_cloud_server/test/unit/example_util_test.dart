@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../../lib/src/example_util.dart';
+import 'package:iot_cloud_server/src/example_util.dart';
 
 void main() {
   test(

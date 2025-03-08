@@ -10,45 +10,83 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
-import '../endpoints/io_module_endpoint.dart' as _i2;
-import '../endpoints/iot_device_endpoint.dart' as _i3;
-import '../endpoints/platformio_endpoint.dart' as _i4;
-import '../endpoints/platformio_file_endpoint.dart' as _i5;
-import 'package:iot_cloud_server/src/generated/io_module/io_module.dart' as _i6;
+import '../endpoints/example_endpoint.dart' as _i2;
+import '../endpoints/io_module_endpoint.dart' as _i3;
+import '../endpoints/iot_device_endpoint.dart' as _i4;
+import '../endpoints/platformio_endpoint.dart' as _i5;
+import '../endpoints/platformio_file_endpoint.dart' as _i6;
+import '../endpoints/url_shortener_endpoint.dart' as _i7;
+import 'package:iot_cloud_server/src/generated/io_module/io_module.dart' as _i8;
 import 'package:iot_cloud_server/src/generated/iot_device/iot_device.dart'
-    as _i7;
+    as _i9;
 import 'package:iot_cloud_server/src/generated/platformio/platformio_project.dart'
-    as _i8;
+    as _i10;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
   void initializeEndpoints(_i1.Server server) {
     var endpoints = <String, _i1.Endpoint>{
-      'ioModule': _i2.IoModuleEndpoint()
+      'example': _i2.ExampleEndpoint()
+        ..initialize(
+          server,
+          'example',
+          null,
+        ),
+      'ioModule': _i3.IoModuleEndpoint()
         ..initialize(
           server,
           'ioModule',
           null,
         ),
-      'iotDevice': _i3.IotDeviceEndpoint()
+      'iotDevice': _i4.IotDeviceEndpoint()
         ..initialize(
           server,
           'iotDevice',
           null,
         ),
-      'platformio': _i4.PlatformioEndpoint()
+      'platformio': _i5.PlatformioEndpoint()
         ..initialize(
           server,
           'platformio',
           null,
         ),
-      'platformioFile': _i5.PlatformioFileEndpoint()
+      'platformioFile': _i6.PlatformioFileEndpoint()
         ..initialize(
           server,
           'platformioFile',
           null,
         ),
+      'urlShortener': _i7.UrlShortenerEndpoint()
+        ..initialize(
+          server,
+          'urlShortener',
+          null,
+        ),
     };
+    connectors['example'] = _i1.EndpointConnector(
+      name: 'example',
+      endpoint: endpoints['example']!,
+      methodConnectors: {
+        'hello': _i1.MethodConnector(
+          name: 'hello',
+          params: {
+            'name': _i1.ParameterDescription(
+              name: 'name',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['example'] as _i2.ExampleEndpoint).hello(
+            session,
+            params['name'],
+          ),
+        )
+      },
+    );
     connectors['ioModule'] = _i1.EndpointConnector(
       name: 'ioModule',
       endpoint: endpoints['ioModule']!,
@@ -58,7 +96,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'ioModule': _i1.ParameterDescription(
               name: 'ioModule',
-              type: _i1.getType<_i6.IoModule>(),
+              type: _i1.getType<_i8.IoModule>(),
               nullable: false,
             )
           },
@@ -66,7 +104,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ioModule'] as _i2.IoModuleEndpoint).insert(
+              (endpoints['ioModule'] as _i3.IoModuleEndpoint).insert(
             session,
             params['ioModule'],
           ),
@@ -76,12 +114,12 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'iotDevice': _i1.ParameterDescription(
               name: 'iotDevice',
-              type: _i1.getType<_i7.IotDevice>(),
+              type: _i1.getType<_i9.IotDevice>(),
               nullable: false,
             ),
             'ioModule': _i1.ParameterDescription(
               name: 'ioModule',
-              type: _i1.getType<_i6.IoModule>(),
+              type: _i1.getType<_i8.IoModule>(),
               nullable: false,
             ),
           },
@@ -89,7 +127,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['ioModule'] as _i2.IoModuleEndpoint).attach(
+              (endpoints['ioModule'] as _i3.IoModuleEndpoint).attach(
             session,
             params['iotDevice'],
             params['ioModule'],
@@ -106,7 +144,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'iotDevice': _i1.ParameterDescription(
               name: 'iotDevice',
-              type: _i1.getType<_i7.IotDevice>(),
+              type: _i1.getType<_i9.IotDevice>(),
               nullable: false,
             )
           },
@@ -114,7 +152,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['iotDevice'] as _i3.IotDeviceEndpoint).register(
+              (endpoints['iotDevice'] as _i4.IotDeviceEndpoint).register(
             session,
             params['iotDevice'],
           ),
@@ -132,7 +170,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .checkPlatformIO(session),
         ),
         'initProject': _i1.MethodConnector(
@@ -168,7 +206,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint).initProject(
+              (endpoints['platformio'] as _i5.PlatformioEndpoint).initProject(
             session,
             params['path'],
             params['board'],
@@ -184,7 +222,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .listProjects(session),
         ),
         'getProject': _i1.MethodConnector(
@@ -200,7 +238,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint).getProject(
+              (endpoints['platformio'] as _i5.PlatformioEndpoint).getProject(
             session,
             params['id'],
           ),
@@ -218,7 +256,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint).deleteProject(
+              (endpoints['platformio'] as _i5.PlatformioEndpoint).deleteProject(
             session,
             params['id'],
           ),
@@ -228,7 +266,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'project': _i1.ParameterDescription(
               name: 'project',
-              type: _i1.getType<_i8.PlatformioProject>(),
+              type: _i1.getType<_i10.PlatformioProject>(),
               nullable: false,
             )
           },
@@ -236,7 +274,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint).buildProject(
+              (endpoints['platformio'] as _i5.PlatformioEndpoint).buildProject(
             session,
             params['project'],
           ),
@@ -246,7 +284,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'project': _i1.ParameterDescription(
               name: 'project',
-              type: _i1.getType<_i8.PlatformioProject>(),
+              type: _i1.getType<_i10.PlatformioProject>(),
               nullable: false,
             ),
             'port': _i1.ParameterDescription(
@@ -259,7 +297,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint).uploadProject(
+              (endpoints['platformio'] as _i5.PlatformioEndpoint).uploadProject(
             session,
             params['project'],
             params['port'],
@@ -270,7 +308,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'project': _i1.ParameterDescription(
               name: 'project',
-              type: _i1.getType<_i8.PlatformioProject>(),
+              type: _i1.getType<_i10.PlatformioProject>(),
               nullable: false,
             ),
             'ipAddress': _i1.ParameterDescription(
@@ -288,7 +326,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .uploadProjectOTA(
             session,
             params['project'],
@@ -303,7 +341,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .listBoards(session),
         ),
         'searchBoards': _i1.MethodConnector(
@@ -319,7 +357,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint).searchBoards(
+              (endpoints['platformio'] as _i5.PlatformioEndpoint).searchBoards(
             session,
             params['query'],
           ),
@@ -331,7 +369,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .listDevices(session),
         ),
         'installLibrary': _i1.MethodConnector(
@@ -339,7 +377,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'project': _i1.ParameterDescription(
               name: 'project',
-              type: _i1.getType<_i8.PlatformioProject>(),
+              type: _i1.getType<_i10.PlatformioProject>(),
               nullable: false,
             ),
             'library': _i1.ParameterDescription(
@@ -352,7 +390,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .installLibrary(
             session,
             params['project'],
@@ -372,7 +410,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .searchLibraries(
             session,
             params['query'],
@@ -385,7 +423,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .updateLibraryIndex(session),
         ),
         'readProjectFile': _i1.MethodConnector(
@@ -401,7 +439,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .readProjectFile(
             session,
             params['path'],
@@ -425,7 +463,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .writeProjectFile(
             session,
             params['path'],
@@ -445,7 +483,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .listProjectFiles(
             session,
             params['projectPath'],
@@ -458,7 +496,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .listPlatforms(session),
         ),
         'installPlatform': _i1.MethodConnector(
@@ -474,7 +512,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .installPlatform(
             session,
             params['platform'],
@@ -487,7 +525,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .updatePlatforms(session),
         ),
         'syncProjects': _i1.MethodConnector(
@@ -497,7 +535,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .syncProjects(session),
         ),
         'executeDockerCommand': _i1.MethodConnector(
@@ -513,7 +551,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformio'] as _i4.PlatformioEndpoint)
+              (endpoints['platformio'] as _i5.PlatformioEndpoint)
                   .executeDockerCommand(
             session,
             params['command'],
@@ -538,7 +576,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+              (endpoints['platformioFile'] as _i6.PlatformioFileEndpoint)
                   .listFiles(
             session,
             params['directoryPath'],
@@ -557,7 +595,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+              (endpoints['platformioFile'] as _i6.PlatformioFileEndpoint)
                   .readFile(
             session,
             params['filePath'],
@@ -581,7 +619,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+              (endpoints['platformioFile'] as _i6.PlatformioFileEndpoint)
                   .writeFile(
             session,
             params['filePath'],
@@ -601,7 +639,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+              (endpoints['platformioFile'] as _i6.PlatformioFileEndpoint)
                   .createDirectory(
             session,
             params['directoryPath'],
@@ -625,13 +663,38 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['platformioFile'] as _i5.PlatformioFileEndpoint)
+              (endpoints['platformioFile'] as _i6.PlatformioFileEndpoint)
                   .deleteFileOrDirectory(
             session,
             params['path'],
             params['recursive'],
           ),
         ),
+      },
+    );
+    connectors['urlShortener'] = _i1.EndpointConnector(
+      name: 'urlShortener',
+      endpoint: endpoints['urlShortener']!,
+      methodConnectors: {
+        'createShortUrl': _i1.MethodConnector(
+          name: 'createShortUrl',
+          params: {
+            'longUrl': _i1.ParameterDescription(
+              name: 'longUrl',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['urlShortener'] as _i7.UrlShortenerEndpoint)
+                  .createShortUrl(
+            session,
+            params['longUrl'],
+          ),
+        )
       },
     );
   }

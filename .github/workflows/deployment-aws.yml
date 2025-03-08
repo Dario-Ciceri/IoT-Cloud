@@ -58,7 +58,7 @@ jobs:
         env:
           PROJECT_NAME: iot_cloud
           AWS_NAME: iot-cloud
-          DEPLOYMENT_BUCKET: iot-cloud-deployment-8258185
+          DEPLOYMENT_BUCKET: iot-cloud-deployment-6764989
           TARGET: ${{ github.event.inputs.target }}
         run: |
           # Deploy server to AWS

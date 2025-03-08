@@ -1,0 +1,10 @@
+class: UrlMapping
+table: url_mapping
+fields:
+  shortCode: String
+  originalUrl: String
+  createdAt: DateTime?
+indexes:
+  url_mapping_short_code_idx:
+    fields: shortCode
+    unique: true

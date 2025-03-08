@@ -11,6 +11,7 @@ environment:
 dependencies:
   mqtt_client: ^10.8.0
   cbor: ^6.3.5
+  typed_data: ^1.4.0
   # path: ^1.8.0
 
 dev_dependencies:

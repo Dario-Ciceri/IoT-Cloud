@@ -1,3 +1,5 @@
+import 'package:iot_cloud_server/src/web/routes/not_found_route.dart';
+import 'package:iot_cloud_server/src/web/routes/redirect_route.dart';
 import 'package:serverpod/serverpod.dart';
 
 import 'package:iot_cloud_mqtt/iot_cloud_mqtt.dart';
@@ -30,8 +32,13 @@ void run(List<String> args) async {
     '/*',
   );
 
+  pod.webServer.addRoute(RedirectRoute(), '/s/*');
+  pod.webServer.addRoute(NotFoundRoute(), '/not_found');
+
   // Start the server.
   await pod.start();
 
-  await MqttClientHandler().connect();
+  final MqttClientHandler mqttClientHandler = MqttClientHandler();
+
+  await mqttClientHandler.connect();
 }

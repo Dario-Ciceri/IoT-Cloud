@@ -1,4 +1,4 @@
-import '../lib/server.dart';
+import 'package:iot_cloud_server/server.dart';
 
 /// This is the starting point for your Serverpod server. Typically, there is
 /// no need to modify this file.

@@ -1,3 +1,5 @@
+example:
+  - hello:
 ioModule:
   - insert:
   - attach:
@@ -32,3 +34,5 @@ platformioFile:
   - writeFile:
   - createDirectory:
   - deleteFileOrDirectory:
+urlShortener:
+  - createShortUrl:

@@ -33,6 +33,20 @@ import 'package:iot_cloud_client/src/protocol/platformio/platformio_file.dart'
 import 'protocol.dart' as _i13;
 
 /// {@category Endpoint}
+class EndpointExample extends _i1.EndpointRef {
+  EndpointExample(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'example';
+
+  _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
+        'example',
+        'hello',
+        {'name': name},
+      );
+}
+
+/// {@category Endpoint}
 class EndpointIoModule extends _i1.EndpointRef {
   EndpointIoModule(_i1.EndpointCaller caller) : super(caller);
 
@@ -328,6 +342,21 @@ class EndpointPlatformioFile extends _i1.EndpointRef {
       );
 }
 
+/// {@category Endpoint}
+class EndpointUrlShortener extends _i1.EndpointRef {
+  EndpointUrlShortener(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'urlShortener';
+
+  _i2.Future<String> createShortUrl(String longUrl) =>
+      caller.callServerEndpoint<String>(
+        'urlShortener',
+        'createShortUrl',
+        {'longUrl': longUrl},
+      );
+}
+
 class Client extends _i1.ServerpodClientShared {
   Client(
     String host, {
@@ -354,11 +383,15 @@ class Client extends _i1.ServerpodClientShared {
           disconnectStreamsOnLostInternetConnection:
               disconnectStreamsOnLostInternetConnection,
         ) {
+    example = EndpointExample(this);
     ioModule = EndpointIoModule(this);
     iotDevice = EndpointIotDevice(this);
     platformio = EndpointPlatformio(this);
     platformioFile = EndpointPlatformioFile(this);
+    urlShortener = EndpointUrlShortener(this);
   }
+
+  late final EndpointExample example;
 
   late final EndpointIoModule ioModule;
 
@@ -368,12 +401,16 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointPlatformioFile platformioFile;
 
+  late final EndpointUrlShortener urlShortener;
+
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
+        'example': example,
         'ioModule': ioModule,
         'iotDevice': iotDevice,
         'platformio': platformio,
         'platformioFile': platformioFile,
+        'urlShortener': urlShortener,
       };
 
   @override

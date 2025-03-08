@@ -8,6 +8,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "amazon_cognito_identity_dart_2",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/amazon_cognito_identity_dart_2-3.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
       "name": "analyzer",
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/analyzer-7.3.0",
       "packageUri": "lib/",
@@ -42,6 +48,18 @@
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/buffer-1.2.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "built_collection",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/built_collection-5.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "built_value",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/built_value-8.9.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "cbor",
@@ -183,9 +201,9 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.20.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "io",
@@ -225,9 +243,9 @@
     },
     {
       "name": "melos",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/melos-6.3.2",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/melos-7.0.0-dev.7",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.6"
     },
     {
       "name": "meta",
@@ -240,6 +258,12 @@
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/mime-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
+    },
+    {
+      "name": "minio",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/minio-3.5.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "mqtt_client",
@@ -270,6 +294,12 @@
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "petitparser",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/petitparser-6.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
     },
     {
       "name": "platform",
@@ -309,9 +339,9 @@
     },
     {
       "name": "pub_updater",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pub_updater-0.4.0",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pub_updater-0.5.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.5"
     },
     {
       "name": "pubspec_parse",
@@ -506,6 +536,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "very_good_analysis",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/very_good_analysis-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "vm_service",
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-15.0.0",
       "packageUri": "lib/",
@@ -538,6 +574,18 @@
     {
       "name": "webkit_inspection_protocol",
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/webkit_inspection_protocol-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "xml",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/xml-6.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "xml2json",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/xml2json-6.2.6",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -582,9 +630,15 @@
       "rootUri": "../packages/iot_cloud_ide",
       "packageUri": "lib/",
       "languageVersion": "3.6"
+    },
+    {
+      "name": "serverpod_cloud_storage_s3",
+      "rootUri": "../packages/iot_cloud_storage_minio",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-05T23:55:00.378316Z",
+  "generated": "2025-03-07T16:49:15.923067Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///C:/flutter",
