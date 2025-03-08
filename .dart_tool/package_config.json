@@ -74,12 +74,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "checked_yaml",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/checked_yaml-2.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
       "name": "cli_launcher",
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/cli_launcher-0.3.1",
       "packageUri": "lib/",
@@ -243,9 +237,9 @@
     },
     {
       "name": "melos",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/melos-7.0.0-dev.7",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/melos-6.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.0"
     },
     {
       "name": "meta",
@@ -339,15 +333,21 @@
     },
     {
       "name": "pub_updater",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pub_updater-0.5.0",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pub_updater-0.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.0"
     },
     {
-      "name": "pubspec_parse",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pubspec_parse-1.5.0",
+      "name": "pubspec",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pubspec-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "quiver",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/quiver-3.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "redis",
@@ -530,6 +530,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "uri",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/uri-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "uuid",
       "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/uuid-4.5.1",
       "packageUri": "lib/",
@@ -614,6 +620,12 @@
       "languageVersion": "3.6"
     },
     {
+      "name": "iot_cloud_ide",
+      "rootUri": "../packages/iot_cloud_ide",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
       "name": "iot_cloud_mqtt",
       "rootUri": "../packages/iot_cloud_mqtt",
       "packageUri": "lib/",
@@ -626,19 +638,13 @@
       "languageVersion": "3.6"
     },
     {
-      "name": "iot_cloud_ide",
-      "rootUri": "../packages/iot_cloud_ide",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
       "name": "serverpod_cloud_storage_s3",
       "rootUri": "../packages/iot_cloud_storage_minio",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-03-07T16:49:15.923067Z",
+  "generated": "2025-03-08T13:45:24.533757Z",
   "generator": "pub",
   "generatorVersion": "3.6.0",
   "flutterRoot": "file:///C:/flutter",
