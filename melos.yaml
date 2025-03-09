@@ -12,18 +12,12 @@ command:
     releaseUrl: true
 
 scripts:
-  boot: 
-    run: cd ./packages/iot_cloud_mqtt/docker && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose up --build --detach && cd ..
-  dev: 
-    run: cd ./packages/iot_cloud_mqtt/docker && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose up --build --detach && dart bin/main.dart --apply-migrations && cd ..
   gen: 
     run: cd ./packages/iot_cloud_server && serverpod generate && cd ..
   migrate: 
     run: cd ./packages/iot_cloud_server && serverpod create-migration -f && cd ..
-  restart: 
-    run: cd ./packages/iot_cloud_mqtt/docker && docker compose down -v && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose down -v && docker compose up --build --detach && dart bin/main.dart --apply-migrations && cd ..
-  genwatch: 
-    run: cd ./packages/iot_cloud_server && serverpod generate --watch
+  reset: 
+    run: cd ./packages/iot_cloud_mqtt/docker && docker compose down -v && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose down -v && docker compose up --build --detach && cd ..
   format:
     run: melos exec dart format . --fix
     description: Run `dart format` for all packages.
