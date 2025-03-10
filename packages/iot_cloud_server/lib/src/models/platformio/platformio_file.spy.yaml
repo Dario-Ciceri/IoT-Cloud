@@ -4,4 +4,4 @@ fields:
     path: String
     isDirectory: bool
     size: int?
-    lastModified: DateTime?
+    lastModified: DateTime?, default=now

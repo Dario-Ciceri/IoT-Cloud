@@ -1,0 +1,5 @@
+exception: ValidationException
+fields:
+  message: String
+  stackTrace: String?
+  errors: Map<String, List<String>>?

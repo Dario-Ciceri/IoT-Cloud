@@ -21,10 +21,13 @@ abstract class IotDeviceState implements _i1.SerializableModel {
     required this.cpuLoad,
     required this.temp,
     required this.mem,
-    required this.heartBeat,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    this.errorMessage,
+    DateTime? heartBeat,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : heartBeat = heartBeat ?? DateTime.now(),
+        createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory IotDeviceState({
     int? id,
@@ -33,9 +36,10 @@ abstract class IotDeviceState implements _i1.SerializableModel {
     required int cpuLoad,
     required double temp,
     required double mem,
-    required DateTime heartBeat,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    String? errorMessage,
+    DateTime? heartBeat,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _IotDeviceStateImpl;
 
   factory IotDeviceState.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -50,6 +54,7 @@ abstract class IotDeviceState implements _i1.SerializableModel {
       cpuLoad: jsonSerialization['cpuLoad'] as int,
       temp: (jsonSerialization['temp'] as num).toDouble(),
       mem: (jsonSerialization['mem'] as num).toDouble(),
+      errorMessage: jsonSerialization['errorMessage'] as String?,
       heartBeat:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['heartBeat']),
       createdAt:
@@ -74,6 +79,8 @@ abstract class IotDeviceState implements _i1.SerializableModel {
 
   double mem;
 
+  String? errorMessage;
+
   DateTime heartBeat;
 
   DateTime createdAt;
@@ -90,6 +97,7 @@ abstract class IotDeviceState implements _i1.SerializableModel {
     int? cpuLoad,
     double? temp,
     double? mem,
+    String? errorMessage,
     DateTime? heartBeat,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -103,6 +111,7 @@ abstract class IotDeviceState implements _i1.SerializableModel {
       'cpuLoad': cpuLoad,
       'temp': temp,
       'mem': mem,
+      if (errorMessage != null) 'errorMessage': errorMessage,
       'heartBeat': heartBeat.toJson(),
       'createdAt': createdAt.toJson(),
       'updatedAt': updatedAt.toJson(),
@@ -125,9 +134,10 @@ class _IotDeviceStateImpl extends IotDeviceState {
     required int cpuLoad,
     required double temp,
     required double mem,
-    required DateTime heartBeat,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    String? errorMessage,
+    DateTime? heartBeat,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           iotDevice: iotDevice,
@@ -135,6 +145,7 @@ class _IotDeviceStateImpl extends IotDeviceState {
           cpuLoad: cpuLoad,
           temp: temp,
           mem: mem,
+          errorMessage: errorMessage,
           heartBeat: heartBeat,
           createdAt: createdAt,
           updatedAt: updatedAt,
@@ -151,6 +162,7 @@ class _IotDeviceStateImpl extends IotDeviceState {
     int? cpuLoad,
     double? temp,
     double? mem,
+    Object? errorMessage = _Undefined,
     DateTime? heartBeat,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -163,6 +175,7 @@ class _IotDeviceStateImpl extends IotDeviceState {
       cpuLoad: cpuLoad ?? this.cpuLoad,
       temp: temp ?? this.temp,
       mem: mem ?? this.mem,
+      errorMessage: errorMessage is String? ? errorMessage : this.errorMessage,
       heartBeat: heartBeat ?? this.heartBeat,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,

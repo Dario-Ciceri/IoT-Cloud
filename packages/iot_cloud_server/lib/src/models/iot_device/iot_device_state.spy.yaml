@@ -6,6 +6,7 @@ fields:
     cpuLoad: int
     temp: double
     mem: double
-    heartBeat: DateTime
-    createdAt: DateTime
-    updatedAt: DateTime
+    errorMessage: String?
+    heartBeat: DateTime, default=now
+    createdAt: DateTime, default=now
+    updatedAt: DateTime, default=now

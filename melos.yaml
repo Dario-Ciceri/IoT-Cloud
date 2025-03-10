@@ -13,13 +13,22 @@ command:
 
 scripts:
   gen: 
-    run: cd ./packages/iot_cloud_server && serverpod generate && cd ..
+    run: cd ./packages/iot_cloud_server && serverpod generate --experimental-features=all && cd .. 
+  
+  genwatch: 
+    run: cd ./packages/iot_cloud_server && serverpod generate -w && cd ..
+
   migrate: 
     run: cd ./packages/iot_cloud_server && serverpod create-migration -f && cd ..
+
   reset: 
     run: cd ./packages/iot_cloud_mqtt/docker && docker compose down -v && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose down -v && docker compose up --build --detach && cd ..
+  
   format:
     run: melos exec dart format . --fix
     description: Run `dart format` for all packages.
+  
   flutter_clean:
     run: melos exec flutter clean
+  build:
+    run: cd apps/iot_cloud_flutter && flutter pub run build_runner build --delete-conflicting-outputs

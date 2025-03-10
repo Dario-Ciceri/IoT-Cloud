@@ -26,9 +26,10 @@ abstract class IoModule implements _i1.SerializableModel {
     required this.name,
     required this.type,
     required this.subtype,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory IoModule({
     int? id,
@@ -40,8 +41,8 @@ abstract class IoModule implements _i1.SerializableModel {
     required String name,
     required _i4.IoModuleType type,
     required _i5.IoModuleSubType subtype,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _IoModuleImpl;
 
   factory IoModule.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -146,8 +147,8 @@ class _IoModuleImpl extends IoModule {
     required String name,
     required _i4.IoModuleType type,
     required _i5.IoModuleSubType subtype,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           iotDeviceId: iotDeviceId,

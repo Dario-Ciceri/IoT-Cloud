@@ -2,13 +2,23 @@ import '../generated/protocol.dart';
 import 'package:serverpod/serverpod.dart';
 
 class IotDeviceEndpoint extends Endpoint {
-  // Registra un nuovo dispositivo
-  Future<bool> register(Session session, IotDevice iotDevice) async {
-    try {
-      await IotDevice.db.insertRow(session, iotDevice);
-      return true;
-    } catch (e) {
-      return false;
-    }
+  Future<List<IotDevice>> list(Session session) async {
+    // await IotDevice.db.attachRow.state(
+    //   session,
+    //   (await IotDevice.db.findById(session, 1))!,
+    //   (await IotDeviceState.db.findById(session, 1))!,
+    // );
+    return await IotDevice.db.find(
+      session,
+      include: IotDevice.include(
+        state: IotDeviceState.include(),
+        attachedModules: IoModule.includeList(),
+        pins: Pin.includeList(),
+      ),
+    );
+  }
+
+  Future<IotDevice?> retrieve(Session session, int id) async {
+    return await IotDevice.db.findById(session, id);
   }
 }

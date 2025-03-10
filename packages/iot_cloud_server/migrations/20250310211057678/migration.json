@@ -1,0 +1,102 @@
+{
+  "actions": [
+    {
+      "type": "deleteTable",
+      "deleteTable": "iot_device_state"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "iot_device_state",
+        "dartName": "IotDeviceState",
+        "module": "iot_cloud",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 6,
+            "isNullable": false,
+            "columnDefault": "nextval('iot_device_state_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "status",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "protocol:IotDeviceStatus"
+          },
+          {
+            "name": "cpuLoad",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "temp",
+            "columnType": 3,
+            "isNullable": false,
+            "dartType": "double"
+          },
+          {
+            "name": "mem",
+            "columnType": 3,
+            "isNullable": false,
+            "dartType": "double"
+          },
+          {
+            "name": "errorMessage",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "String"
+          },
+          {
+            "name": "heartBeat",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          },
+          {
+            "name": "createdAt",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "columnType": 4,
+            "isNullable": false,
+            "dartType": "DateTime"
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "indexName": "iot_device_state_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"iot_device_state\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "iot_device_state",
+      "columns": [
+        "errorMessage"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}

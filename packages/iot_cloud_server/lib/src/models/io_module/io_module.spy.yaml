@@ -9,8 +9,8 @@ fields:
     type: IoModuleType
     subtype: IoModuleSubType
     #config: ModuleConfig
-    createdAt: DateTime
-    updatedAt: DateTime
+    createdAt: DateTime, default=now
+    updatedAt: DateTime, default=now
 indexes:
   io_module_state_unique_idx:
     fields: stateId

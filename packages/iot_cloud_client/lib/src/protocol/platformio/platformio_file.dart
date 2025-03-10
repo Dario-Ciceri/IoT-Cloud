@@ -17,8 +17,8 @@ abstract class PlatformioFile implements _i1.SerializableModel {
     required this.path,
     required this.isDirectory,
     this.size,
-    this.lastModified,
-  });
+    DateTime? lastModified,
+  }) : lastModified = lastModified ?? DateTime.now();
 
   factory PlatformioFile({
     required String name,

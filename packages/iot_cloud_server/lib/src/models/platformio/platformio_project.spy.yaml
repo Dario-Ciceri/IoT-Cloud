@@ -6,5 +6,5 @@ fields:
     description: String?
     board: String?
     framework: String?
-    createdAt: DateTime
-    updatedAt: DateTime
+    createdAt: DateTime, default=now
+    updatedAt: DateTime, default=now

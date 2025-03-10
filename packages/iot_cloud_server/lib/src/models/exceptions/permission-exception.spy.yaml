@@ -1,0 +1,4 @@
+exception: PermissionException
+fields:
+  message: String
+  stackTrace: String?

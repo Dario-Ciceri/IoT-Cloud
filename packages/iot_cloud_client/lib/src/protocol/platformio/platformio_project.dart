@@ -19,9 +19,10 @@ abstract class PlatformioProject implements _i1.SerializableModel {
     this.description,
     this.board,
     this.framework,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory PlatformioProject({
     int? id,
@@ -30,8 +31,8 @@ abstract class PlatformioProject implements _i1.SerializableModel {
     String? description,
     String? board,
     String? framework,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _PlatformioProjectImpl;
 
   factory PlatformioProject.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -111,8 +112,8 @@ class _PlatformioProjectImpl extends PlatformioProject {
     String? description,
     String? board,
     String? framework,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           name: name,

@@ -26,9 +26,10 @@ abstract class IoModule implements _i1.TableRow, _i1.ProtocolSerialization {
     required this.name,
     required this.type,
     required this.subtype,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory IoModule({
     int? id,
@@ -40,8 +41,8 @@ abstract class IoModule implements _i1.TableRow, _i1.ProtocolSerialization {
     required String name,
     required _i4.IoModuleType type,
     required _i5.IoModuleSubType subtype,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _IoModuleImpl;
 
   factory IoModule.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -198,8 +199,8 @@ class _IoModuleImpl extends IoModule {
     required String name,
     required _i4.IoModuleType type,
     required _i5.IoModuleSubType subtype,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           iotDeviceId: iotDeviceId,
@@ -279,10 +280,12 @@ class IoModuleTable extends _i1.Table {
     createdAt = _i1.ColumnDateTime(
       'createdAt',
       this,
+      hasDefault: true,
     );
     updatedAt = _i1.ColumnDateTime(
       'updatedAt',
       this,
+      hasDefault: true,
     );
   }
 

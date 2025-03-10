@@ -9,8 +9,8 @@ fields:
     state: IotDeviceState?, relation(name=iot_device_state, field=stateId)
     attachedModules: List<IoModule>?, relation(name=iot_device_attached_modules)
     pins: List<Pin>?, relation(name=iot_device_pins)
-    createdAt: DateTime
-    updatedAt: DateTime
+    createdAt: DateTime, default=now
+    updatedAt: DateTime, default=now
 indexes:
   iot_device_state_unique_idx:
     fields: stateId

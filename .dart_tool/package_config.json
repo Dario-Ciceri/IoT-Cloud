@@ -207,9 +207,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.7.1",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.7.2",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.7"
     },
     {
       "name": "json_annotation",
@@ -327,7 +327,7 @@
     },
     {
       "name": "pub_semver",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pub_semver-2.1.5",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/pub_semver-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -483,9 +483,9 @@
     },
     {
       "name": "synchronized",
-      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/synchronized-3.3.0+3",
+      "rootUri": "file:///C:/Users/cicer/AppData/Local/Pub/Cache/hosted/pub.dev/synchronized-3.3.1",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     },
     {
       "name": "system_resources",
@@ -617,37 +617,37 @@
       "name": "iot_cloud_client",
       "rootUri": "../packages/iot_cloud_client",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.7"
     },
     {
       "name": "iot_cloud_ide",
       "rootUri": "../packages/iot_cloud_ide",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.7"
     },
     {
       "name": "iot_cloud_mqtt",
       "rootUri": "../packages/iot_cloud_mqtt",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.7"
     },
     {
       "name": "iot_cloud_server",
       "rootUri": "../packages/iot_cloud_server",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.7"
     },
     {
       "name": "serverpod_cloud_storage_s3",
       "rootUri": "../packages/iot_cloud_storage_minio",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-08T14:07:45.353902Z",
+  "generated": "2025-03-10T19:27:35.846401Z",
   "generator": "pub",
-  "generatorVersion": "3.6.0",
+  "generatorVersion": "3.7.0",
   "flutterRoot": "file:///C:/flutter",
-  "flutterVersion": "3.27.1",
+  "flutterVersion": "3.29.1",
   "pubCache": "file:///C:/Users/cicer/AppData/Local/Pub/Cache"
 }

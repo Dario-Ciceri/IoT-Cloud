@@ -1,0 +1,56 @@
+BEGIN;
+
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "io_module" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "io_module" ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "io_module_state" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "io_module_state" ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "iot_device" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "iot_device" ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "iot_device_state" ALTER COLUMN "heartBeat" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "iot_device_state" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "iot_device_state" ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "pin" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "pin" ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "platformio_project" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "platformio_project" ALTER COLUMN "updatedAt" SET DEFAULT CURRENT_TIMESTAMP;
+--
+-- ACTION ALTER TABLE
+--
+ALTER TABLE "url_mapping" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+
+--
+-- MIGRATION VERSION FOR iot_cloud
+--
+INSERT INTO "serverpod_migrations" ("module", "version", "timestamp")
+    VALUES ('iot_cloud', '20250310212315536', now())
+    ON CONFLICT ("module")
+    DO UPDATE SET "version" = '20250310212315536', "timestamp" = now();
+
+--
+-- MIGRATION VERSION FOR serverpod
+--
+INSERT INTO "serverpod_migrations" ("module", "version", "timestamp")
+    VALUES ('serverpod', '20240516151843329', now())
+    ON CONFLICT ("module")
+    DO UPDATE SET "version" = '20240516151843329', "timestamp" = now();
+
+
+COMMIT;

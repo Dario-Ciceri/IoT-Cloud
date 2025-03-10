@@ -33,20 +33,6 @@ import 'package:iot_cloud_client/src/protocol/platformio/platformio_file.dart'
 import 'protocol.dart' as _i13;
 
 /// {@category Endpoint}
-class EndpointExample extends _i1.EndpointRef {
-  EndpointExample(_i1.EndpointCaller caller) : super(caller);
-
-  @override
-  String get name => 'example';
-
-  _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
-        'example',
-        'hello',
-        {'name': name},
-      );
-}
-
-/// {@category Endpoint}
 class EndpointIoModule extends _i1.EndpointRef {
   EndpointIoModule(_i1.EndpointCaller caller) : super(caller);
 
@@ -81,11 +67,18 @@ class EndpointIotDevice extends _i1.EndpointRef {
   @override
   String get name => 'iotDevice';
 
-  _i2.Future<bool> register(_i4.IotDevice iotDevice) =>
-      caller.callServerEndpoint<bool>(
+  _i2.Future<List<_i4.IotDevice>> list() =>
+      caller.callServerEndpoint<List<_i4.IotDevice>>(
         'iotDevice',
-        'register',
-        {'iotDevice': iotDevice},
+        'list',
+        {},
+      );
+
+  _i2.Future<_i4.IotDevice?> retrieve(int id) =>
+      caller.callServerEndpoint<_i4.IotDevice?>(
+        'iotDevice',
+        'retrieve',
+        {'id': id},
       );
 }
 
@@ -383,15 +376,12 @@ class Client extends _i1.ServerpodClientShared {
           disconnectStreamsOnLostInternetConnection:
               disconnectStreamsOnLostInternetConnection,
         ) {
-    example = EndpointExample(this);
     ioModule = EndpointIoModule(this);
     iotDevice = EndpointIotDevice(this);
     platformio = EndpointPlatformio(this);
     platformioFile = EndpointPlatformioFile(this);
     urlShortener = EndpointUrlShortener(this);
   }
-
-  late final EndpointExample example;
 
   late final EndpointIoModule ioModule;
 
@@ -405,7 +395,6 @@ class Client extends _i1.ServerpodClientShared {
 
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
-        'example': example,
         'ioModule': ioModule,
         'iotDevice': iotDevice,
         'platformio': platformio,

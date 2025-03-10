@@ -1,0 +1,5 @@
+exception: NetworkException
+fields:
+  message: String
+  stackTrace: String?
+  statusCode: int?

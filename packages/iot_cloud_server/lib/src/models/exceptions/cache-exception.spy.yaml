@@ -1,0 +1,4 @@
+exception: CacheException
+fields:
+  message: String
+  stackTrace: String?

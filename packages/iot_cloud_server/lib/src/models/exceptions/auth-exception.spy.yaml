@@ -1,0 +1,5 @@
+exception: AuthException
+fields:
+  message: String
+  stackTrace: String?
+  statusCode: int?

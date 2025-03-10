@@ -1,10 +1,9 @@
-example:
-  - hello:
 ioModule:
   - insert:
   - attach:
 iotDevice:
-  - register:
+  - list:
+  - retrieve:
 platformio:
   - checkPlatformIO:
   - initProject:

@@ -16,8 +16,8 @@ abstract class UrlMapping implements _i1.SerializableModel {
     this.id,
     required this.shortCode,
     required this.originalUrl,
-    this.createdAt,
-  });
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
 
   factory UrlMapping({
     int? id,

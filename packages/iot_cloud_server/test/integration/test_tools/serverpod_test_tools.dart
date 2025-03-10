@@ -117,8 +117,6 @@ void withServerpod(
 }
 
 class TestEndpoints {
-  late final _ExampleEndpoint example;
-
   late final _IoModuleEndpoint ioModule;
 
   late final _IotDeviceEndpoint iotDevice;
@@ -137,10 +135,6 @@ class _InternalTestEndpoints extends TestEndpoints
     _i2.SerializationManager serializationManager,
     _i2.EndpointDispatch endpoints,
   ) {
-    example = _ExampleEndpoint(
-      endpoints,
-      serializationManager,
-    );
     ioModule = _IoModuleEndpoint(
       endpoints,
       serializationManager,
@@ -161,46 +155,6 @@ class _InternalTestEndpoints extends TestEndpoints
       endpoints,
       serializationManager,
     );
-  }
-}
-
-class _ExampleEndpoint {
-  _ExampleEndpoint(
-    this._endpointDispatch,
-    this._serializationManager,
-  );
-
-  final _i2.EndpointDispatch _endpointDispatch;
-
-  final _i2.SerializationManager _serializationManager;
-
-  _i3.Future<String> hello(
-    _i1.TestSessionBuilder sessionBuilder,
-    String name,
-  ) async {
-    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
-      var _localUniqueSession =
-          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
-        endpoint: 'example',
-        method: 'hello',
-      );
-      try {
-        var _localCallContext = await _endpointDispatch.getMethodCallContext(
-          createSessionCallback: (_) => _localUniqueSession,
-          endpointPath: 'example',
-          methodName: 'hello',
-          parameters: _i1.testObjectToJson({'name': name}),
-          serializationManager: _serializationManager,
-        );
-        var _localReturnValue = await (_localCallContext.method.call(
-          _localUniqueSession,
-          _localCallContext.arguments,
-        ) as _i3.Future<String>);
-        return _localReturnValue;
-      } finally {
-        await _localUniqueSession.close();
-      }
-    });
   }
 }
 
@@ -287,28 +241,55 @@ class _IotDeviceEndpoint {
 
   final _i2.SerializationManager _serializationManager;
 
-  _i3.Future<bool> register(
-    _i1.TestSessionBuilder sessionBuilder,
-    _i5.IotDevice iotDevice,
-  ) async {
+  _i3.Future<List<_i5.IotDevice>> list(
+      _i1.TestSessionBuilder sessionBuilder) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
           (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
         endpoint: 'iotDevice',
-        method: 'register',
+        method: 'list',
       );
       try {
         var _localCallContext = await _endpointDispatch.getMethodCallContext(
           createSessionCallback: (_) => _localUniqueSession,
           endpointPath: 'iotDevice',
-          methodName: 'register',
-          parameters: _i1.testObjectToJson({'iotDevice': iotDevice}),
+          methodName: 'list',
+          parameters: _i1.testObjectToJson({}),
           serializationManager: _serializationManager,
         );
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<bool>);
+        ) as _i3.Future<List<_i5.IotDevice>>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<_i5.IotDevice?> retrieve(
+    _i1.TestSessionBuilder sessionBuilder,
+    int id,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'iotDevice',
+        method: 'retrieve',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'iotDevice',
+          methodName: 'retrieve',
+          parameters: _i1.testObjectToJson({'id': id}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<_i5.IotDevice?>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

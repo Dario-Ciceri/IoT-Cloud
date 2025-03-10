@@ -26,9 +26,10 @@ abstract class IotDevice implements _i1.TableRow, _i1.ProtocolSerialization {
     this.state,
     this.attachedModules,
     this.pins,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory IotDevice({
     int? id,
@@ -40,8 +41,8 @@ abstract class IotDevice implements _i1.TableRow, _i1.ProtocolSerialization {
     _i3.IotDeviceState? state,
     List<_i4.IoModule>? attachedModules,
     List<_i5.Pin>? pins,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _IotDeviceImpl;
 
   factory IotDevice.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -205,8 +206,8 @@ class _IotDeviceImpl extends IotDevice {
     _i3.IotDeviceState? state,
     List<_i4.IoModule>? attachedModules,
     List<_i5.Pin>? pins,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           serialId: serialId,
@@ -284,10 +285,12 @@ class IotDeviceTable extends _i1.Table {
     createdAt = _i1.ColumnDateTime(
       'createdAt',
       this,
+      hasDefault: true,
     );
     updatedAt = _i1.ColumnDateTime(
       'updatedAt',
       this,
+      hasDefault: true,
     );
   }
 

@@ -8,8 +8,8 @@ fields:
     properties: List<PinProperty>
     stateId: int
     state: PinState?, relation(name=pin_state, field=stateId)
-    createdAt: DateTime
-    updatedAt: DateTime
+    createdAt: DateTime, default=now
+    updatedAt: DateTime, default=now
 indexes:
   pin_state_unique_idx:
     fields: stateId

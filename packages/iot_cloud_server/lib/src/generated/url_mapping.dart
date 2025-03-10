@@ -16,8 +16,8 @@ abstract class UrlMapping implements _i1.TableRow, _i1.ProtocolSerialization {
     this.id,
     required this.shortCode,
     required this.originalUrl,
-    this.createdAt,
-  });
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
 
   factory UrlMapping({
     int? id,
@@ -159,6 +159,7 @@ class UrlMappingTable extends _i1.Table {
     createdAt = _i1.ColumnDateTime(
       'createdAt',
       this,
+      hasDefault: true,
     );
   }
 

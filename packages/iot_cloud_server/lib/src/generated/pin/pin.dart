@@ -26,9 +26,10 @@ abstract class Pin implements _i1.TableRow, _i1.ProtocolSerialization {
     required this.properties,
     required this.stateId,
     this.state,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory Pin({
     int? id,
@@ -40,8 +41,8 @@ abstract class Pin implements _i1.TableRow, _i1.ProtocolSerialization {
     required List<_i4.PinProperty> properties,
     required int stateId,
     _i5.PinState? state,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _PinImpl;
 
   factory Pin.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -200,8 +201,8 @@ class _PinImpl extends Pin {
     required List<_i4.PinProperty> properties,
     required int stateId,
     _i5.PinState? state,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           iotDeviceId: iotDeviceId,
@@ -280,10 +281,12 @@ class PinTable extends _i1.Table {
     createdAt = _i1.ColumnDateTime(
       'createdAt',
       this,
+      hasDefault: true,
     );
     updatedAt = _i1.ColumnDateTime(
       'updatedAt',
       this,
+      hasDefault: true,
     );
   }
 

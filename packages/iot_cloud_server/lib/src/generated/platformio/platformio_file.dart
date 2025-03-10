@@ -18,8 +18,8 @@ abstract class PlatformioFile
     required this.path,
     required this.isDirectory,
     this.size,
-    this.lastModified,
-  });
+    DateTime? lastModified,
+  }) : lastModified = lastModified ?? DateTime.now();
 
   factory PlatformioFile({
     required String name,

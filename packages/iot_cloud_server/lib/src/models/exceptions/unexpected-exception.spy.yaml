@@ -1,0 +1,4 @@
+exception: UnexpectedException
+fields:
+  message: String
+  stackTrace: String?

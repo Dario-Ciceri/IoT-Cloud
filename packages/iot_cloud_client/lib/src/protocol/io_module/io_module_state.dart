@@ -19,17 +19,18 @@ abstract class IoModuleState implements _i1.SerializableModel {
     this.ioModule,
     required this.value,
     required this.unit,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   factory IoModuleState({
     int? id,
     _i2.IoModule? ioModule,
     required String value,
     required _i3.UnitType unit,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _IoModuleStateImpl;
 
   factory IoModuleState.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -100,8 +101,8 @@ class _IoModuleStateImpl extends IoModuleState {
     _i2.IoModule? ioModule,
     required String value,
     required _i3.UnitType unit,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) : super._(
           id: id,
           ioModule: ioModule,

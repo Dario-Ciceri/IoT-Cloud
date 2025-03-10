@@ -4,5 +4,5 @@ fields:
     ioModule: IoModule?, relation(name=io_module_state)
     value: String
     unit: UnitType
-    createdAt: DateTime
-    updatedAt: DateTime
+    createdAt: DateTime, default=now
+    updatedAt: DateTime, default=now
