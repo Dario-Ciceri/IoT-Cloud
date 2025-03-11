@@ -16,6 +16,12 @@ abstract class ApiModule {
     return FlutterConnectivityMonitor();
   }
 
+  //* Session manager
+  @lazySingleton
+  SessionManager provideSessionManager() {
+    return SessionManager();
+  }
+
   //* Client
   @dev
   @lazySingleton

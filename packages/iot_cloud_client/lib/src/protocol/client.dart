@@ -30,7 +30,8 @@ import 'package:iot_cloud_client/src/protocol/platformio/platformio_platform.dar
     as _i11;
 import 'package:iot_cloud_client/src/protocol/platformio/platformio_file.dart'
     as _i12;
-import 'protocol.dart' as _i13;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i13;
+import 'protocol.dart' as _i14;
 
 /// {@category Endpoint}
 class EndpointIoModule extends _i1.EndpointRef {
@@ -350,6 +351,14 @@ class EndpointUrlShortener extends _i1.EndpointRef {
       );
 }
 
+class Modules {
+  Modules(Client client) {
+    auth = _i13.Caller(client);
+  }
+
+  late final _i13.Caller auth;
+}
+
 class Client extends _i1.ServerpodClientShared {
   Client(
     String host, {
@@ -366,7 +375,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i13.Protocol(),
+          _i14.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -381,6 +390,7 @@ class Client extends _i1.ServerpodClientShared {
     platformio = EndpointPlatformio(this);
     platformioFile = EndpointPlatformioFile(this);
     urlShortener = EndpointUrlShortener(this);
+    modules = Modules(this);
   }
 
   late final EndpointIoModule ioModule;
@@ -393,6 +403,8 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointUrlShortener urlShortener;
 
+  late final Modules modules;
+
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
         'ioModule': ioModule,
@@ -403,5 +415,6 @@ class Client extends _i1.ServerpodClientShared {
       };
 
   @override
-  Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};
+  Map<String, _i1.ModuleEndpointCaller> get moduleLookup =>
+      {'auth': modules.auth};
 }

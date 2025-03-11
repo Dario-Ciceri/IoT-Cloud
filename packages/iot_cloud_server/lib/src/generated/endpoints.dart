@@ -20,6 +20,7 @@ import 'package:iot_cloud_server/src/generated/iot_device/iot_device.dart'
     as _i8;
 import 'package:iot_cloud_server/src/generated/platformio/platformio_project.dart'
     as _i9;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i10;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -675,5 +676,6 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
+    modules['serverpod_auth'] = _i10.Endpoints()..initializeEndpoints(server);
   }
 }
