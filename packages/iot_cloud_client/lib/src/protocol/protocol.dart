@@ -54,6 +54,7 @@ import 'package:iot_cloud_client/src/protocol/platformio/platformio_platform.dar
     as _i37;
 import 'package:iot_cloud_client/src/protocol/platformio/platformio_file.dart'
     as _i38;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i39;
 export 'example.dart';
 export 'exceptions/auth-exception.dart';
 export 'exceptions/cache-exception.dart';
@@ -349,6 +350,9 @@ class Protocol extends _i1.SerializationManager {
           .map((e) => deserialize<_i38.PlatformioFile>(e))
           .toList() as T;
     }
+    try {
+      return _i39.Protocol().deserialize<T>(data, t);
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
 
@@ -445,6 +449,10 @@ class Protocol extends _i1.SerializationManager {
     }
     if (data is _i31.UrlMapping) {
       return 'UrlMapping';
+    }
+    className = _i39.Protocol().getClassNameForObject(data);
+    if (className != null) {
+      return 'serverpod_auth.$className';
     }
     return null;
   }
@@ -544,6 +552,10 @@ class Protocol extends _i1.SerializationManager {
     }
     if (dataClassName == 'UrlMapping') {
       return deserialize<_i31.UrlMapping>(data['data']);
+    }
+    if (dataClassName.startsWith('serverpod_auth.')) {
+      data['className'] = dataClassName.substring(15);
+      return _i39.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

@@ -15,20 +15,15 @@ void main() {
           create: (_) {
             return resolve<IotDeviceBloc>();
           },
-        )
+        ),
       ],
-      child: IotCloudApp(
-        appRouter: resolve<AppRouter>(),
-      ),
+      child: IotCloudApp(appRouter: resolve<AppRouter>()),
     ),
   );
 }
 
 class IotCloudApp extends StatelessWidget {
-  const IotCloudApp({
-    super.key,
-    required this.appRouter,
-  });
+  const IotCloudApp({super.key, required this.appRouter});
   final AppRouter appRouter;
 
   @override

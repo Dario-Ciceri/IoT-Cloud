@@ -21,6 +21,9 @@ scripts:
   migrate: 
     run: cd ./packages/iot_cloud_server && serverpod create-migration -f && cd ..
 
+  restart: 
+    run: cd ./packages/iot_cloud_mqtt/docker && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose up --build --detach && cd ..
+
   reset: 
     run: cd ./packages/iot_cloud_mqtt/docker && docker compose down -v && docker compose up --build --detach && cd ../../../ && cd ./packages/iot_cloud_server && docker compose down -v && docker compose up --build --detach && cd ..
   

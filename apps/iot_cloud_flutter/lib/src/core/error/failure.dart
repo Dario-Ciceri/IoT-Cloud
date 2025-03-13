@@ -21,10 +21,8 @@ class Failure with _$Failure {
   }) = ServerFailure;
 
   /// Cache related failures
-  const factory Failure.cache({
-    required String message,
-    String? stackTrace,
-  }) = CacheFailure;
+  const factory Failure.cache({required String message, String? stackTrace}) =
+      CacheFailure;
 
   /// Validation related failures
   const factory Failure.validation({
@@ -62,15 +60,18 @@ class Failure with _$Failure {
 
   /// Helper for getting a debug message
   String get debugMessage => when(
-        network: (message, _, __) =>
-            'Network error: Please check your connection',
-        server: (message, _, statusCode) =>
-            'Server error${statusCode != null ? ' ($statusCode)' : ''}',
-        cache: (message, _) => 'Data loading error',
-        validation: (message, errors, _) =>
+    network:
+        (message, _, __) =>
+            'Errore di rete: verificare la connessione al server.',
+    server:
+        (message, _, statusCode) =>
+            'Errore server${statusCode != null ? ' ($statusCode)' : ''}.',
+    cache: (message, _) => 'Data loading error',
+    validation:
+        (message, errors, _) =>
             errors?.values.expand((e) => e).join(', ') ?? message,
-        auth: (message, _, __) => 'Authentication error',
-        permission: (message, _) => 'Permission denied',
-        unexpected: (message, _) => 'An unexpected error occurred',
-      );
+    auth: (message, _, __) => 'Authentication error',
+    permission: (message, _) => 'Permission denied',
+    unexpected: (message, _) => 'An unexpected error occurred',
+  );
 }
