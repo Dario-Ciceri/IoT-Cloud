@@ -1,4 +1,6 @@
-# melos_managed_dependency_overrides: iot_cloud_mqtt
+# melos_managed_dependency_overrides: iot_cloud_mqtt,iot_cloud_zenoh
 dependency_overrides:
   iot_cloud_mqtt:
     path: ..\\iot_cloud_mqtt
+  iot_cloud_zenoh:
+    path: ..\\iot_cloud_zenoh

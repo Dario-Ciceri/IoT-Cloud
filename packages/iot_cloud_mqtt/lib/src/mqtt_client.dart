@@ -14,23 +14,17 @@ class MqttClientHandler {
   HttpServer? firmwareServer;
 
   // Constructor
-  MqttClientHandler({
-    this.serverAddress,
-  });
+  MqttClientHandler({this.serverAddress});
 
   /// Connect to the MQTT broker
   Future<void> connect({
-    String host = 'localhost',
+    String host = 'mosquitto',
     int port = 1883,
     String username = 'serverpod',
     String password = 'serverpod',
     String clientId = 'dart_ota_client',
   }) async {
-    client = MqttServerClient.withPort(
-      host,
-      clientId,
-      port,
-    );
+    client = MqttServerClient.withPort(host, clientId, port);
     client.logging(on: false);
     client.keepAlivePeriod = 20;
     client.onConnected = _onConnected;
@@ -86,7 +80,8 @@ class MqttClientHandler {
 
   /// Handle incoming MQTT messages
   Future<void> _handleMessage(
-      List<MqttReceivedMessage<MqttMessage?>>? messages) async {
+    List<MqttReceivedMessage<MqttMessage?>>? messages,
+  ) async {
     if (messages == null || messages.isEmpty) return;
 
     final receivedMessage = messages[0];
@@ -113,7 +108,8 @@ class MqttClientHandler {
 
         if (decodedData.containsKey('status')) {
           print(
-              'Device: $device - Status: ${decodedData['status']} - ${decodedData['message'] ?? ''}');
+            'Device: $device - Status: ${decodedData['status']} - ${decodedData['message'] ?? ''}',
+          );
         }
 
         if (decodedData.containsKey('percentage')) {
@@ -126,7 +122,8 @@ class MqttClientHandler {
           final total = decodedData['total'];
           final percent = total > 0 ? (current * 100 ~/ total) : 0;
           print(
-              'Device: $device - Download: $current/$total bytes ($percent%)');
+            'Device: $device - Download: $current/$total bytes ($percent%)',
+          );
         }
       }
     } catch (e) {
@@ -256,9 +253,13 @@ class MqttClientHandler {
     if (serverHost != null) {
       encoder.writeString('host', serverHost);
       encoder.writeInt(
-          'port', serverPort ?? 80); // Default to port 80 if not specified
+        'port',
+        serverPort ?? 80,
+      ); // Default to port 80 if not specified
       encoder.writeString(
-          'path', serverPath ?? '/'); // Default to root path if not specified
+        'path',
+        serverPath ?? '/',
+      ); // Default to root path if not specified
     } else if (firmwareUrl != null) {
       encoder.writeString('url', firmwareUrl);
     }
@@ -289,14 +290,19 @@ class MqttClientHandler {
     print('Sending firmware update command to $targetDeviceId');
     if (serverHost != null) {
       print(
-          'Firmware server: http://$serverHost:${serverPort ?? 80}${serverPath ?? '/'}');
+        'Firmware server: http://$serverHost:${serverPort ?? 80}${serverPath ?? '/'}',
+      );
     } else {
       print('Firmware URL: $firmwareUrl');
     }
 
     // Publish the message
-    client.publishMessage(topic, MqttQos.exactlyOnce, builder.payload!,
-        retain: false);
+    client.publishMessage(
+      topic,
+      MqttQos.exactlyOnce,
+      builder.payload!,
+      retain: false,
+    );
 
     print('Update command sent successfully');
   }
@@ -342,10 +348,12 @@ class MqttClientHandler {
         final bName = b.name.toLowerCase();
 
         // Check if either interface is wireless or ethernet
-        final aIsPreferred = aName.contains('wlan') ||
+        final aIsPreferred =
+            aName.contains('wlan') ||
             aName.contains('eth') ||
             aName.contains('en');
-        final bIsPreferred = bName.contains('wlan') ||
+        final bIsPreferred =
+            bName.contains('wlan') ||
             bName.contains('eth') ||
             bName.contains('en');
 
@@ -360,7 +368,8 @@ class MqttClientHandler {
       print('Available network interfaces:');
       for (var interface in interfaces) {
         print(
-            '${interface.name}: ${interface.addresses.map((a) => a.address).join(', ')}');
+          '${interface.name}: ${interface.addresses.map((a) => a.address).join(', ')}',
+        );
       }
 
       // Use the first address of the preferred interface
@@ -371,7 +380,8 @@ class MqttClientHandler {
 
       final ipAddress = selectedInterface.addresses.first.address;
       print(
-          'Selected server IP address: $ipAddress (${selectedInterface.name})');
+        'Selected server IP address: $ipAddress (${selectedInterface.name})',
+      );
 
       // Cache the detected address
       serverAddress = ipAddress;
@@ -407,11 +417,14 @@ class MqttClientHandler {
       // Handle requests
       firmwareServer!.listen((HttpRequest request) async {
         print(
-            'Received firmware download request from: ${request.connectionInfo?.remoteAddress.address}');
+          'Received firmware download request from: ${request.connectionInfo?.remoteAddress.address}',
+        );
 
         // Set headers
-        request.response.headers.contentType =
-            ContentType('application', 'octet-stream');
+        request.response.headers.contentType = ContentType(
+          'application',
+          'octet-stream',
+        );
         request.response.headers.add('Content-Length', await file.length());
 
         // Send the file
@@ -454,8 +467,10 @@ class MqttClientHandler {
       print('Starting OTA update process for device: $targetDeviceId');
 
       // 1. Host the firmware file and get server details
-      final serverInfo =
-          await hostFirmwareFile(firmwarePath: firmwarePath, port: httpPort);
+      final serverInfo = await hostFirmwareFile(
+        firmwarePath: firmwarePath,
+        port: httpPort,
+      );
 
       print('Firmware server details:');
       print('Host: ${serverInfo['host']}');
@@ -488,7 +503,8 @@ class MqttClientHandler {
       print('OTA update initiated for device: $targetDeviceId');
       print('Monitor the device status for progress updates');
       print(
-          'The HTTP server will remain running until you call stopFirmwareServer()');
+        'The HTTP server will remain running until you call stopFirmwareServer()',
+      );
     } catch (e) {
       print('Error during firmware update process: $e');
       rethrow;
@@ -511,7 +527,8 @@ class MqttClientHandler {
         print('Content length: $contentLength bytes');
       } else {
         print(
-            'Content length: not specified (will be determined during download)');
+          'Content length: not specified (will be determined during download)',
+        );
       }
 
       await sendFirmwareUpdateCommand(

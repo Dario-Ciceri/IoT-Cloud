@@ -5,13 +5,15 @@ description: Starting point for a Serverpod server.
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: '>=3.7.0 <4.0.0'
 
 dependencies:
   serverpod: 2.4.0
   serverpod_auth_server: 2.4.0
   iot_cloud_mqtt:
     path: ../iot_cloud_mqtt
+  iot_cloud_zenoh:
+    path: ../iot_cloud_zenoh
 
 dev_dependencies:
   lints: '>=3.0.0 <6.0.0'

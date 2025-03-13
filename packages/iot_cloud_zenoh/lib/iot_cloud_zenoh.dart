@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/iot_cloud_zenoh_base.dart';
+export 'src/zenoh_wrapper.dart';
 
 // TODO: Export any libraries intended for clients of this package.

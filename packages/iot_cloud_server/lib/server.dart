@@ -1,3 +1,4 @@
+import 'package:iot_cloud_zenoh/iot_cloud_zenoh.dart';
 import 'package:serverpod/serverpod.dart';
 
 import 'package:iot_cloud_mqtt/iot_cloud_mqtt.dart';
@@ -44,4 +45,6 @@ void run(List<String> args) async {
   final MqttClientHandler mqttClientHandler = MqttClientHandler();
 
   await mqttClientHandler.connect();
+
+  final ZenohLib zenohLib = ZenohLib();
 }

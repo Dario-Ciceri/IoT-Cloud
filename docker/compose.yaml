@@ -1,0 +1,34 @@
+# Master docker-compose che orchestra tutti i servizi IoT Cloud
+version: '3.8'
+
+services:
+  # Include gli altri compose
+  mqtt:
+    extends:
+      file: ../packages/iot_cloud_mqtt/docker/compose.yaml
+      service: mosquitto
+  
+  server:
+    extends:
+      file: ../packages/iot_cloud_server/docker-compose.yaml
+      service: serverpod
+  
+  db:
+    extends:
+      file: ../packages/iot_cloud_server/docker-compose.yaml
+      service: postgres
+  
+  redis:
+    extends:
+      file: ../packages/iot_cloud_server/docker-compose.yaml
+      service: redis
+  
+  platformio:
+    extends:
+      file: ../packages/iot_cloud_ide/platformio/docker/compose.yaml
+      service: platformio
+
+networks:
+  iot_cloud_network:
+    name: iot_cloud_network
+    driver: bridge

@@ -245,10 +245,10 @@
       "name": "iot_cloud",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-13T12:27:40.458446Z",
+  "generated": "2025-03-13T13:00:49.721552Z",
   "generator": "pub",
   "generatorVersion": "3.7.0",
   "flutterRoot": "file:///C:/flutter",

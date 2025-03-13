@@ -5,9 +5,17 @@ services:
     volumes:
       - ./config:/mosquitto/config
       - ./data:/mosquitto/data
-      - .log:/mosquitto/log
+      - ./log:/mosquitto/log
     ports:
       - 1883:1883
       - 9001:9001
     stdin_open: true
     tty: true
+    restart: unless-stopped
+    networks:
+      - iot_cloud_network
+
+networks:
+  iot_cloud_network:
+    name: iot_cloud_network
+    external: false

@@ -288,6 +288,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  iot_cloud_zenoh:
+    dependency: "direct main"
+    description:
+      path: "../iot_cloud_zenoh"
+      relative: true
+    source: path
+    version: "1.0.0"
   jose:
     dependency: transitive
     description:

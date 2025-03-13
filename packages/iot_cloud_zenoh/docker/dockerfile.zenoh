@@ -12,7 +12,7 @@ FROM alpine:latest
 
 RUN apk add --no-cache libstdc++ libgcc
 
-# Nota: percorso corretto e nome file corretto
+# Copia librerie costruite
 COPY --from=builder /build/zenoh-c/target/release/libzenohc.so /usr/local/lib/
 COPY --from=builder /build/zenoh-c/target/release/libzenohc.a /usr/local/lib/
 COPY --from=builder /build/zenoh-c/include/ /usr/local/include/

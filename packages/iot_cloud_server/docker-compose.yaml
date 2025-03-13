@@ -10,6 +10,14 @@ services:
       POSTGRES_PASSWORD: "Z2NTHZLngaIUqIy43PHcj3lEbbDtfzCe"
     volumes:
       - iot_cloud_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - iot_cloud_network
 
   redis:
     image: redis:6.2.6
@@ -18,30 +26,44 @@ services:
     command: redis-server --requirepass "YXuZgLiJwallacF6yEZ02wkvM__B6pQE"
     environment:
       - REDIS_REPLICATION_MODE=master
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "YXuZgLiJwallacF6yEZ02wkvM__B6pQE", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - iot_cloud_network
 
   # Zenoh service
-  zenoh-lib:
-    build:
-      context: .
-      dockerfile: ../iot_cloud_zenoh/docker/dockerfile.zenoh
-    volumes:
-      - zenoh-libs:/shared-libs
-    ports:
-      - "7447:7447"
+  # zenoh-lib:
+  #   build:
+  #     context: ../iot_cloud_zenoh/docker
+  #     dockerfile: dockerfile.zenoh
+  #   volumes:
+  #     - zenoh-libs:/shared-libs
+  #   ports:
+  #     - "7447:7447"
+  #   networks:
+  #     - iot_cloud_network
   
   # Serverpod application
   serverpod:
     build:
-      context: .
+      context: ../../  # This points to the root directory of your project
+      dockerfile: packages/iot_cloud_server/dockerfile  # Path to Dockerfile relative to context
     depends_on:
-      - postgres
-      - redis
-      - zenoh-lib
-    volumes:
-      - zenoh-libs:/usr/local/lib/zenoh
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      # zenoh-lib:
+      #   condition: service_started
+    # volumes:
+    #   - zenoh-libs:/usr/local/lib/zenoh
     environment:
-      - LD_LIBRARY_PATH=/usr/local/lib/zenoh
-      - runmode=production
+      # - LD_LIBRARY_PATH=/usr/local/lib/zenoh
+      - runmode=development
       - serverid=default
       - logging=normal
       - role=monolith
@@ -49,6 +71,15 @@ services:
       - "8080:8080"
       - "8081:8081"
       - "8082:8082"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - iot_cloud_network
 
   # Test services
   postgres_test:
@@ -61,6 +92,8 @@ services:
       POSTGRES_PASSWORD: "1YmLulh618ooskfcTi1-4HTSRFzs6TiQ"
     volumes:
       - iot_cloud_test_data:/var/lib/postgresql/data
+    networks:
+      - iot_cloud_network
 
   redis_test:
     image: redis:6.2.6
@@ -69,8 +102,15 @@ services:
     command: redis-server --requirepass "s-yrpexUtgK_P5ZNRUMn5w9gPCQgR5VU"
     environment:
       - REDIS_REPLICATION_MODE=master
+    networks:
+      - iot_cloud_network
 
 volumes:
   iot_cloud_data:
   iot_cloud_test_data:
-  zenoh-libs:
+  # zenoh-libs:
+
+networks:
+  iot_cloud_network:
+    name: iot_cloud_network
+    driver: bridge
