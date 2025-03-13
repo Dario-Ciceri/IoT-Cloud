@@ -8,6 +8,7 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: IotDeviceRoute.page, path: '/', initial: true),
-      ];
+    AutoRoute(page: DashboardRoute.page, path: '/', initial: true),
+    AutoRoute(page: IotDeviceRoute.page, path: '/iotDevices'),
+  ];
 }

@@ -1,0 +1,29 @@
+FROM rust:slim AS builder
+
+# Installare git oltre a cmake e build-essential
+RUN apt-get update && apt-get install -y cmake build-essential git
+
+WORKDIR /build
+RUN git clone https://github.com/eclipse-zenoh/zenoh-c.git
+WORKDIR /build/zenoh-c
+RUN mkdir build && cd build && cmake .. && make
+
+FROM alpine:latest
+
+RUN apk add --no-cache libstdc++ libgcc
+
+# Nota: percorso corretto e nome file corretto
+COPY --from=builder /build/zenoh-c/target/release/libzenohc.so /usr/local/lib/
+COPY --from=builder /build/zenoh-c/target/release/libzenohc.a /usr/local/lib/
+COPY --from=builder /build/zenoh-c/include/ /usr/local/include/
+
+# Volume per condividere le librerie
+VOLUME /shared-libs
+
+# Copia le librerie nella directory condivisa all'avvio
+CMD cp /usr/local/lib/libzenohc.so /shared-libs/ && \
+    cp /usr/local/lib/libzenohc.a /shared-libs/ && \
+    mkdir -p /shared-libs/include && \
+    cp -r /usr/local/include/* /shared-libs/include/ && \
+    # Mantiene il container in esecuzione
+    tail -f /dev/null

@@ -2,7 +2,7 @@
 # Mode: development
 
 name: serverpod_cloud_storage_s3
-resolution: workspace
+#resolution: workspace
 description: Serverpod integration for S3 cloud storage
 version: 2.3.0
 repository: https://github.com/serverpod/serverpod
@@ -10,7 +10,7 @@ homepage: https://serverpod.dev
 issue_tracker: https://github.com/serverpod/serverpod/issues
 
 environment:
-  sdk: '>=3.7.0 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
   serverpod: 2.4.0

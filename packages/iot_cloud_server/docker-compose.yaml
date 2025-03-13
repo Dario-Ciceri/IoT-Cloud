@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: iot_cloud
-      POSTGRES_PASSWORD: "siMyLqTxWUWfhGVQz1FAnGTFRenbRjPF"
+      POSTGRES_PASSWORD: "Z2NTHZLngaIUqIy43PHcj3lEbbDtfzCe"
     volumes:
       - iot_cloud_data:/var/lib/postgresql/data
 
@@ -18,6 +18,37 @@ services:
     command: redis-server --requirepass "YXuZgLiJwallacF6yEZ02wkvM__B6pQE"
     environment:
       - REDIS_REPLICATION_MODE=master
+
+  # Zenoh service
+  zenoh-lib:
+    build:
+      context: .
+      dockerfile: ../iot_cloud_zenoh/docker/dockerfile.zenoh
+    volumes:
+      - zenoh-libs:/shared-libs
+    ports:
+      - "7447:7447"
+  
+  # Serverpod application
+  serverpod:
+    build:
+      context: .
+    depends_on:
+      - postgres
+      - redis
+      - zenoh-lib
+    volumes:
+      - zenoh-libs:/usr/local/lib/zenoh
+    environment:
+      - LD_LIBRARY_PATH=/usr/local/lib/zenoh
+      - runmode=production
+      - serverid=default
+      - logging=normal
+      - role=monolith
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
 
   # Test services
   postgres_test:
@@ -42,3 +73,4 @@ services:
 volumes:
   iot_cloud_data:
   iot_cloud_test_data:
+  zenoh-libs:

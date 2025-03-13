@@ -16,6 +16,10 @@ ENV serverid=default
 ENV logging=normal
 ENV role=monolith
 
+# Crea directory per le librerie Zenoh
+RUN mkdir -p /usr/local/lib/zenoh
+RUN mkdir -p /usr/local/include/zenoh
+
 # Copy runtime dependencies
 COPY --from=build /runtime/ /
 

@@ -1,11 +1,11 @@
 name: iot_cloud_mqtt
-resolution: workspace
+#resolution: workspace
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
 
 environment:
-  sdk: '>=3.7.0 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:

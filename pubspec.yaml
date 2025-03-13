@@ -1,14 +1,15 @@
 name: iot_cloud
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dev_dependencies:
   melos: ^6.0.0
 
-workspace:
-  - packages/iot_cloud_client
-  - packages/iot_cloud_ide
-  - packages/iot_cloud_mqtt
-  - packages/iot_cloud_server
-  - packages/iot_cloud_storage_minio
+# workspace:
+#   - packages/iot_cloud_client
+#   - packages/iot_cloud_ide
+#   - packages/iot_cloud_mqtt
+#   - packages/iot_cloud_zenoh
+#   - packages/iot_cloud_server
+#   - packages/iot_cloud_storage_minio

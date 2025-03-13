@@ -26,6 +26,8 @@ import 'package:iot_cloud_flutter/src/features/iot_device/domain/usecases/retrie
     as _i88;
 import 'package:iot_cloud_flutter/src/features/iot_device/presentation/bloc/iot_device_bloc.dart'
     as _i434;
+import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart'
+    as _i584;
 import 'package:serverpod_flutter/serverpod_flutter.dart' as _i730;
 
 const String _dev = 'dev';
@@ -42,34 +44,52 @@ extension GetItInjectableX on _i174.GetIt {
     final routeModule = _$RouteModule();
     gh.lazySingleton<_i730.FlutterConnectivityMonitor>(
       () => apiModule.provideConnectivityMonitor(),
+      registerFor: {_dev},
     );
-    gh.lazySingleton<_i740.Client>(
-      () => apiModule.provideClient(),
+    gh.lazySingleton<_i584.FlutterAuthenticationKeyManager>(
+      () => apiModule.provideAuthenticationManager(),
       registerFor: {_dev},
     );
     gh.lazySingleton<_i434.IotDeviceBloc>(
       () => blocModule.provideIotDeviceBloc(),
       registerFor: {_dev},
     );
-    gh.factory<_i503.IotDeviceRemoteDatasource>(
-      () => apiModule.provideIotDeviceRemoteDatasource(),
-      registerFor: {_dev},
-    );
-    gh.factory<_i619.IotDeviceRepository>(
-      () => apiModule.provideIotDeviceRepository(),
-      registerFor: {_dev},
-    );
-    gh.factory<_i594.ListIotDevicesUseCase>(
-      () => apiModule.provideListIotDevicesUseCase(),
-      registerFor: {_dev},
-    );
-    gh.factory<_i88.RetrieveIotDevicesUseCase>(
-      () => apiModule.provideFetchIotDevicesUseCase(),
-      registerFor: {_dev},
-    );
     gh.lazySingleton<_i589.AppRouter>(
       () =>
           routeModule.provideAppRouter(gh<_i730.FlutterConnectivityMonitor>()),
+      registerFor: {_dev},
+    );
+    gh.lazySingleton<_i740.Client>(
+      () => apiModule.provideClient(
+        gh<_i584.FlutterAuthenticationKeyManager>(),
+        gh<_i730.FlutterConnectivityMonitor>(),
+      ),
+      registerFor: {_dev},
+    );
+    gh.factory<_i503.IotDeviceRemoteDatasource>(
+      () => apiModule.provideIotDeviceRemoteDatasource(gh<_i740.Client>()),
+      registerFor: {_dev},
+    );
+    gh.lazySingletonAsync<_i584.SessionManager>(
+      () => apiModule.provideSessionManager(gh<_i740.Client>()),
+      registerFor: {_dev},
+    );
+    gh.factory<_i619.IotDeviceRepository>(
+      () => apiModule.provideIotDeviceRepository(
+        gh<_i503.IotDeviceRemoteDatasource>(),
+      ),
+      registerFor: {_dev},
+    );
+    gh.factory<_i594.ListIotDevicesUseCase>(
+      () => apiModule.provideListIotDevicesUseCase(
+        gh<_i619.IotDeviceRepository>(),
+      ),
+      registerFor: {_dev},
+    );
+    gh.factory<_i88.RetrieveIotDevicesUseCase>(
+      () => apiModule.provideFetchIotDevicesUseCase(
+        gh<_i619.IotDeviceRepository>(),
+      ),
       registerFor: {_dev},
     );
     return this;
